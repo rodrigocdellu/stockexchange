@@ -31,7 +31,7 @@ Este repositório possui 3 aplicações, sendo:
 - Runtime JavaScript: [Node.js v22.14.0](https://nodejs.org/pt)  
 - Gerenciador de Pacotes: [NPM v10.9.2](https://www.npmjs.com/package/npm/v/10.9.2)  
 - Framework Front-end: [Angular CLI v19.2.8](https://github.com/angular/angular-cli)
-- Estilização: [Angular Material v????](https://github.com/angular/angular-cli)  
+- Estilização: [Angular Material v19.2.10](https://github.com/angular/angular-cli)  
 
 ## 🚀 Ambientes de Execução
 
