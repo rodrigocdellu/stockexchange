@@ -120,7 +120,7 @@ docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
 4. Caso não consiga construir as imagens, você pode baixá-las do meu Docker Hub:
 
 - [Back-end .NET Core](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
-- [Front-end Angular]([http://localhost:7000](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui))
+- [Front-end Angular](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui))
 
 ## 💕 Clean Code
 
