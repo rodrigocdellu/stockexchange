@@ -44,6 +44,13 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
+      - name: Remove sonar-project.properties (for .NET scan)
+        shell: powershell
+        run: |
+          if (Test-Path sonar-project.properties) {
+            Remove-Item sonar-project.properties
+          }
+
       - name: Begin Sonar analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
