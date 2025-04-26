@@ -84,35 +84,45 @@ cd stockexchange/StockExchange.AngularUI/; code .
 
 3. **Opcional**: Caso quira, você pode abrir todos os projetos no Visual Studio 2022 Community através do arquivo **StockExchange.sln**
 
-
-
-
-
 ## 🐳 Ambiente de Produção (Docker)
 
-1. Com o **Docker** devidamente instalado, execute o seguinte comando no diretório que contém o arquivo `Dockerfile`:
+1. Com o **Docker** devidamente instalado, execute o seguinte comando na pasta 'stockexchange' para criar uma imagem do Back-end .NET Core:
 
 ```
-docker build -t stockexchange.webapi .
+docker build -f Dockerfile.backend -t stockexchange.webapi .
 ```
 
-2. Após a criação da imagem, inicie o contêiner com o comando:
+2. Para o Front-end Angular execute o seguinte comando na pasta 'stockexchange':
+
+```
+docker build -f Dockerfile.frontend -t stockexchange.angularui .
+```
+
+3. Após a criação da imagem, inicie o contêiner do Back-end .NET Core com o comando:
 
 ```
 docker run --name stockexchange.webapi -d -p 7200:80 stockexchange.webapi
 ```
 
-3. A aplicação **StockExchange.WebAPI** poderá ser acessada em ambiente de produção pelo endereço:
+4. Repita o processo para o Front-end Angular:
 
-[http://localhost:7200](http://localhost:7200)
+```
+docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
+```
 
-4. Caso não consiga construir a imagem, pode baixá-la em:
+5. Após a execução dos containers, você pode acessar a aplicação através dos seguintes endereços:
 
-[https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
+- Back-end .NET Core: [http://localhost:7200](http://localhost:7200)
+- Front-end Angular: [http://localhost:7000](http://localhost:7000)
+
+4. Caso não consiga construir a imagem, você pode baixá-la do meu Docker Hub:
+
+- [Back-end .NET Core](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
+- [Front-end Angular]([http://localhost:7000](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui))
 
 ## 💕 Clean Code
 
-Aqui disponibilizo os [resultados da analise estática de cógido](https://sonarcloud.io/organizations/rodrigocdellu/projects) com as configurações padrão do SonarQube Cloud.
+Aqui disponibilizo os [resultados da analise estática de cógido](https://sonarcloud.io/project/overview?id=rodrigocdellu_stockexchange) com as configurações padrão do SonarQube Cloud.
 
 ## 🤝 Contribuições
 
