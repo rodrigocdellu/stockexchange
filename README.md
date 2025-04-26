@@ -6,9 +6,9 @@ Este repositório contém uma aplicação **back-end** desenvolvida em **.NET Co
 ## 📦 Conteúdo do Repositório
 
 Este repositório possui 3 aplicações, sendo:
-- **StockExchange.WebAPI**: Back-end .NET Core responsável por fornecer os serviços financeiros via API REST.
-- **StockExchange.WebAPI.Test**: NUnit .NET Core responsável por testar o Back-end .NET Core de forma integrada e automática.
-- **StockExchange.AngularUI**: Front-end Angular com Material responsável por fornecer uma interface com o usuário e realizar requisições aos serviços financeiras do Back-end .NET Core.
+- StockExchange.WebAPI: Back-end .NET Core responsável por fornecer os serviços financeiros via API REST.
+- StockExchange.WebAPI.Test: NUnit .NET Core responsável por testar o Back-end .NET Core de forma integrada e automática.
+- StockExchange.AngularUI: Front-end Angular com Material responsável por fornecer uma interface com o usuário e realizar requisições aos serviços financeiras do Back-end .NET Core.
 
 ## 🛠️ Ferramentas Utilizadas
 
