@@ -50,7 +50,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin `
-            /k:"rodrigocdellu_stockexchange.back-end" `
+            /k:"rodrigocdellu_stockexchange" `
             /o:"rodrigocdellu" `
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.host.url="https://sonarcloud.io" `
