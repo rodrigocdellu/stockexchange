@@ -122,7 +122,7 @@ docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
 - [Back-end .NET Core](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
 - [Front-end Angular](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui)
 
-## 💕 Clean Code
+## ❤ Clean Code
 
 Aqui disponibilizo os [resultados da analise estática de cógido](https://sonarcloud.io/project/overview?id=rodrigocdellu_stockexchange) com as configurações padrão do SonarQube Cloud.
 
