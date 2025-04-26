@@ -60,17 +60,17 @@ jobs:
 
       - name: Restore dependencies
         shell: powershell
-        run: dotnet restore
+        run: dotnet restore stockexchange-backend.sln
 
       - name: Build the project
         shell: powershell
-        run: dotnet build --no-restore
+        run: dotnet build stockexchange-backend.sln --no-restore
 
       - name: Run tests with Code Coverage and TRX Report
         continue-on-error: true # To see the failure on SonarQube Cloud
         shell: powershell
         run: |
-          dotnet test --no-build --verbosity normal `
+          dotnet test stockexchange-backend.sln --no-build --verbosity normal `
             --logger:"trx;LogFileName=TestResults.trx" `
             --collect:"XPlat Code Coverage;Format=opencover" `
             --results-directory:"StockExchange.WebAPI.Test/TestResults"      
