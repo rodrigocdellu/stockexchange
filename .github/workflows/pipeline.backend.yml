@@ -8,7 +8,7 @@ on:
 
 jobs:
   backend:
-    name: Backend - .NET Core Analyze/Build/Test
+    name: Backend - .NET Core - Analyze/Build/Test
     runs-on: windows-latest
 
     steps:
@@ -82,8 +82,11 @@ jobs:
         run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
         
   frontend:
-    name: Frontend - Angular Build/Test
+    name: Frontend - Angular - Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: StockExchange.AngularUI
     steps:
       - uses: actions/checkout@v4
         with:
