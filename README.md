@@ -36,9 +36,9 @@ Este repositório possui 3 aplicações, sendo:
 ## 🚀 Ambientes de Execução
 
 **IMPORTANTE:**
-- Certifique-se de que todas as ferramentas e pacotes utilizados estejam instaladas e funcionando.
-- Antes de executar, verifique se as portas 5041 e 4200 estão disponíveis.
-- Os comandos a seguir podem ser executados no **PowerShell (Windows)** ou no **Terminal (Linux)**.
+Certifique-se de que todas as ferramentas e pacotes utilizados estejam instaladas e funcionando.
+Antes de executar, verifique se as portas 5041 e 4200 estão disponíveis.
+Os comandos a seguir podem ser executados no **PowerShell (Windows)** ou no **Terminal (Linux)**.
 
 1. Baixe o repositório do [GitHub](https://github.com/rodrigocdellu/stockexchange)
 
@@ -66,9 +66,9 @@ cd stockexchange/StockExchange.AngularUI/; npm install; ng serve
 ## 💻 Ambiente de Desenvolvimento
 
 **IMPORTANTE:**
-- Certifique-se de que todas as ferramentas e pacotes utilizados estejam instaladas e funcionando.
-- Antes de executar, verifique se as portas 5041 e 4200 estão disponíveis.
-- Os comandos a seguir podem ser executados no **PowerShell (Windows)** ou no **Terminal (Linux)**.
+Certifique-se de que todas as ferramentas e pacotes utilizados estejam instaladas e funcionando.
+Antes de executar, verifique se as portas 5041 e 4200 estão disponíveis.
+Os comandos a seguir podem ser executados no **PowerShell (Windows)** ou no **Terminal (Linux)**.
 
 1. Com os repositório já baixados, execute os seguintes comandos para desenvolver o Back-end .NET Core:
 
