@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.WebAPI", "StockExchange.WebAPI\StockExchange.WebAPI.csproj", "{FEDFF80D-175D-9B89-F647-57876E056004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.WebAPI.Test", "StockExchange.WebAPI.Test\StockExchange.WebAPI.Test.csproj", "{89DB0040-72DE-AB47-5D09-E549158367D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEDFF80D-175D-9B89-F647-57876E056004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDFF80D-175D-9B89-F647-57876E056004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDFF80D-175D-9B89-F647-57876E056004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDFF80D-175D-9B89-F647-57876E056004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89DB0040-72DE-AB47-5D09-E549158367D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DB0040-72DE-AB47-5D09-E549158367D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DB0040-72DE-AB47-5D09-E549158367D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DB0040-72DE-AB47-5D09-E549158367D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAF66FF8-C745-483F-9654-FC30A64CD0A5}
+	EndGlobalSection
+EndGlobal
