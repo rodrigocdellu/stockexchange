@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 2025/02/20 - To run on .NET 8 (LTS) just uncomment this and comment out the line below
+    <TargetFramework>net8.0</TargetFramework>
+    -->
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+	
+	<CollectCoverage>true</CollectCoverage>
+	<CoverletOutputFormat>opencover</CoverletOutputFormat>
+	<CoverletOutput>$(OutputDirectory)coverage.opencover.xml</CoverletOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="NUnitXml.TestLogger" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StockExchange.WebAPI\StockExchange.WebAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\RetornoSample.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
