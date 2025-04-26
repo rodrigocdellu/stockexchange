@@ -6,6 +6,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.WebAPI", "Sto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.WebAPI.Test", "StockExchange.WebAPI.Test\StockExchange.WebAPI.Test.csproj", "{89DB0040-72DE-AB47-5D09-E549158367D3}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "StockExchange.AngularUI", "StockExchange.AngularUI\", "{55BF60CE-37BE-C38C-869B-60B877B3F591}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50063"
+		Debug.AspNetCompiler.PhysicalPath = "StockExchange.AngularUI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50063\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50063"
+		Release.AspNetCompiler.PhysicalPath = "StockExchange.AngularUI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50063\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50063"
+		SlnRelativePath = "StockExchange.AngularUI\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +41,10 @@ Global
 		{89DB0040-72DE-AB47-5D09-E549158367D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89DB0040-72DE-AB47-5D09-E549158367D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89DB0040-72DE-AB47-5D09-E549158367D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
