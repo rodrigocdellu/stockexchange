@@ -58,7 +58,7 @@ cd stockexchange/StockExchange.WebAPI/; dotnet run
 cd stockexchange/StockExchange.AngularUI/; npm install; ng serve
 ```
 
-4. Após a execução, você pode acessar a aplicação através dos seguintes endereços:
+4. Após a execução, você pode acessar as aplicações através dos seguintes endereços:
 
 - Back-end .NET Core: [http://localhost:5041](http://localhost:5041)
 - Front-end Angular: [http://localhost:4200](http://localhost:4200)
@@ -110,12 +110,12 @@ docker run --name stockexchange.webapi -d -p 7200:80 stockexchange.webapi
 docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
 ```
 
-5. Após a execução dos containers, você pode acessar a aplicação através dos seguintes endereços:
+5. Após a execução dos containers, você pode acessar as aplicações através dos seguintes endereços:
 
 - Back-end .NET Core: [http://localhost:7200](http://localhost:7200)
 - Front-end Angular: [http://localhost:7000](http://localhost:7000)
 
-4. Caso não consiga construir a imagem, você pode baixá-la do meu Docker Hub:
+4. Caso não consiga construir as imagens, você pode baixá-las do meu Docker Hub:
 
 - [Back-end .NET Core](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
 - [Front-end Angular]([http://localhost:7000](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui))
@@ -126,7 +126,7 @@ Aqui disponibilizo os [resultados da analise estática de cógido](https://sonar
 
 ## 🤝 Contribuições
 
-Contribuições são bem-vindas! Se você deseja sugerir melhorias, corrigir bugs ou adicionar novas funcionalidades, sinta-se à vontade para abrir uma [Issue](https://github.com/rodrigocdellu/stockexchange.back-end/issues) ou enviar um *Pull Request*.
+Contribuições são bem-vindas! Se você deseja sugerir melhorias, corrigir bugs ou adicionar novas funcionalidades, sinta-se à vontade para abrir uma [Issue](https://github.com/rodrigocdellu/stockexchange/issues) ou enviar um *Pull Request*.
 
 Por favor, siga as boas práticas de desenvolvimento e, se possível, adicione testes automatizados relacionados às suas alterações.
 
