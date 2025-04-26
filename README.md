@@ -83,7 +83,8 @@ cd stockexchange/StockExchange.WebAPI/; code .
 cd stockexchange/StockExchange.AngularUI/; code .
 ```
 
-3. **Opcional**: Caso quira, você pode abrir todos os projetos no Visual Studio 2022 Community através do arquivo **StockExchange.sln**
+3. **Opcional**: Caso quira, você pode abrir todos os projetos no Visual Studio 2022 Community através do arquivo [`StockExchange.sln`](./stockexchange.sln).
+
 
 ## 🐳 Ambiente de Produção (Docker)
 
