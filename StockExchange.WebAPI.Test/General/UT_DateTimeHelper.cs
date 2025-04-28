@@ -20,6 +20,6 @@ public class UT_DateTimeHelper
         if (brasilianTimeZone == null)
             Assert.Fail();
         else
-            Assert.That(() => DateTime.Now.ConvertToLocalTime(brasilianTimeZone.Id), Throws.Exception);        
+            Assert.That(() => DateTime.Now.ToSaoPauloDateTime(brasilianTimeZone.Id), Throws.Exception);        
     }
 }
