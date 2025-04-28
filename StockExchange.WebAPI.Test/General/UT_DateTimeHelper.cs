@@ -15,11 +15,12 @@ public class UT_DateTimeHelper
     {
         // Load data
         var brasilianTimeZone = TestHelper.GetBrasilianTimeZone();
+        var brasilianTimeZoneDisplayName = DateTime.UtcNow.DisplayTimeZoneName();
 
         // If there is no data, the test fail
         if (brasilianTimeZone == null)
             Assert.Fail();
         else
-            Assert.That(() => DateTime.Now.ToSaoPauloDateTime(brasilianTimeZone.Id), Throws.Exception);        
+            Assert.That(() => brasilianTimeZone.DisplayName.Equals(brasilianTimeZoneDisplayName), Throws.Exception);
     }
 }
