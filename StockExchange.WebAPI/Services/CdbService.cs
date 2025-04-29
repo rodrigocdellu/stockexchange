@@ -29,7 +29,7 @@ public class CdbService : ICdbService
         // Verifica o formato do parâmetro investimento
         estaValido = Regex.IsMatch(investimento.ToString(CultureInfo.InvariantCulture), regex, RegexOptions.None, TimeSpan.FromMilliseconds(1000));
         
-        // Valida o o formato e define a mensagem
+        // Valida o formato e define a mensagem
         if (!estaValido)
         {
             mensagemValidacao = $"O parâmetro 'investimento' possui um formato inválido. Valor fornecido: '{investimento}'";
@@ -44,7 +44,7 @@ public class CdbService : ICdbService
         // Verifica o tipo do parâmetro investimento
         estaValido = decimal.TryParse(investimento.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out investimentoValidado);
 
-        // Valida o o formato e define a mensagem
+        // Valida o tipo e define a mensagem
         if (!estaValido)
         {
             mensagemValidacao = $"O parâmetro 'investimento' possui um tipo inválido. Valor fornecido: '{investimento}'";
@@ -55,7 +55,7 @@ public class CdbService : ICdbService
         // Verifica o tipo do parâmetro investimento
         estaValido = uint.TryParse(meses.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out mesesValidado);
 
-        // Valida o o formato e define a mensagem
+        // Valida o tipo e define a mensagem
         if (!estaValido)
         {
             mensagemValidacao = $"O parâmetro 'meses' possui um tipo inválido. Valor fornecido: '{meses}'";
@@ -77,7 +77,7 @@ public class CdbService : ICdbService
         // A mensagem de validação inicial é vazia
         mensagemValidacao = String.Empty;
 
-        // Valida o formato e define a mensagem
+        // Valida o valor e define a mensagem
         if (investimento <= 0)
         {
             mensagemValidacao = $"O parâmetro 'investimento' não pode ser negativo. Valor fornecido: '{investimento}'";
@@ -85,7 +85,7 @@ public class CdbService : ICdbService
             return false;
         }
         
-        // Valida o formato e define a mensagem
+        // Valida o valor e define a mensagem
         if (meses < 1)
         {
             mensagemValidacao = $"O parâmetro 'meses' deve ser maior que zero. Valor fornecido: '{meses}'";
