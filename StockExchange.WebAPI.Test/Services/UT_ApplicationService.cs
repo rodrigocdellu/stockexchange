@@ -10,6 +10,8 @@ public class UT_ApplicationService
     [SetUp]
     public void Setup()
     {
+        // Create the service
+        this._ApplicationService = new ApplicationService();
     }
 
     [Test]
@@ -18,12 +20,13 @@ public class UT_ApplicationService
         // Load data
         var brasilianTimeZone = TestHelper.GetBrasilianTimeZone();
 
-        // Do the tests
-        Assert.That(brasilianTimeZone, Is.Not.Null);
-
-        // Create the service
-        this._ApplicationService = new ApplicationService();
-
+        // Do the initial tests
+        Assert.Multiple(() =>
+        {
+            Assert.That(brasilianTimeZone, Is.Not.Null);
+            Assert.That(this._ApplicationService, Is.Not.Null);
+        });
+        
         // Call the service
         var retorno = this._ApplicationService.TimeZone;
 
@@ -39,8 +42,8 @@ public class UT_ApplicationService
     [Test]
     public void Test_TempoInicializacao()
     {
-        // Create the service
-        this._ApplicationService = new ApplicationService();
+        // Do the initial test
+        Assert.That(this._ApplicationService, Is.Not.Null);
 
         // Call the service
         var retorno = this._ApplicationService.StartupTime;
@@ -57,8 +60,8 @@ public class UT_ApplicationService
     [Test]
     public void Test_VersaoFramework()
     {
-        // Create the service
-        this._ApplicationService = new ApplicationService();
+        // Do the initial test
+        Assert.That(this._ApplicationService, Is.Not.Null);
 
         // Call the service
         var retorno = this._ApplicationService.FrameworkVersion;

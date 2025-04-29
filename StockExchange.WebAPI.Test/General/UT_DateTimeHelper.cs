@@ -5,11 +5,6 @@ namespace StockExchange.WebAPI.Test.General;
 
 public class UT_DateTimeHelper
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void Test_FusoHorarioBrazileiro()
     {

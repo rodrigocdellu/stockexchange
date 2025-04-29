@@ -12,19 +12,22 @@ public class UT_CdbService
     [SetUp]
     public void Setup()
     {
+        // Load data
+        this.Samples = TestHelper.LoadData();
+
+        // Create the service
+        this._CdbService = new CdbService();
     }
 
     [Test]
     public void Test_ResultadosInvestimentosValidos()
-    {
-        // Load data
-        this.Samples = TestHelper.LoadData();
-
-        // Do the tests
-        Assert.That(this.Samples, Is.Not.Null);
-
-        // Create the service
-        this._CdbService = new CdbService();
+    {            
+        // Do the initial tests
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.Samples, Is.Not.Null);
+            Assert.That(this._CdbService, Is.Not.Null);
+        });
 
         // Scan the list
         foreach (var sample in this.Samples)
@@ -61,14 +64,12 @@ public class UT_CdbService
     [Test]
     public void Test_ResultadosInvestimentosInvalidos()
     {
-        // Load data
-        this.Samples = TestHelper.LoadData();
-
-        // Do the tests
-        Assert.That(this.Samples, Is.Not.Null);
-
-        // Create the service
-        this._CdbService = new CdbService();
+        // Do the initial tests
+        Assert.Multiple(() =>
+        {
+            Assert.That(this.Samples, Is.Not.Null);
+            Assert.That(this._CdbService, Is.Not.Null);
+        });
 
         // Scan the list
         foreach (var sample in this.Samples)
@@ -109,8 +110,8 @@ public class UT_CdbService
         decimal investimento = 1m;
         uint meses = 0U;
 
-        // Create the service
-        this._CdbService = new CdbService();
+        // Do the initial test
+        Assert.That(this._CdbService, Is.Not.Null);
 
         // Call the service
         var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
@@ -126,8 +127,8 @@ public class UT_CdbService
         decimal investimento = -1m;
         uint meses = 1U;
 
-        // Create the service
-        this._CdbService = new CdbService();
+        // Do the initial test
+        Assert.That(this._CdbService, Is.Not.Null);
 
         // Call the service
         var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
