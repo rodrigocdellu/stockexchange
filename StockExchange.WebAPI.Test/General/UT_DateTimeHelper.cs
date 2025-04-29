@@ -16,6 +16,6 @@ public class UT_DateTimeHelper
         if (brasilianTimeZone == null)
             Assert.Fail();
         else
-            Assert.That(() => brasilianTimeZone.DisplayName.Equals(brasilianTimeZoneDisplayName), Throws.Exception);
+            Assert.That(brasilianTimeZone.DisplayName, Is.EqualTo(brasilianTimeZoneDisplayName));
     }
 }

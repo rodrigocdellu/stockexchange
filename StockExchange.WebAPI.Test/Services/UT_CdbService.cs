@@ -5,6 +5,9 @@ namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
+    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que zero. Valor fornecido: '0'";
+    private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'investimento' não pode ser negativo. Valor fornecido: '-1'";
+
     private ICdbService? _CdbService;
 
     private List<RetornoContainerHelper>? Samples { get; set; }
@@ -114,10 +117,15 @@ public class UT_CdbService
         Assert.That(this._CdbService, Is.Not.Null);
 
         // Call the service
-        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
+        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result;
 
         // Do the tests
-        Assert.That(retorno, Is.Null);
+        Assert.Multiple(() =>
+        {
+            Assert.That(retorno.Data, Is.Null);
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESZERO_MESSAGE));
+            Assert.That(retorno.Success, Is.False);
+        });
     }
 
     [Test]
@@ -131,9 +139,14 @@ public class UT_CdbService
         Assert.That(this._CdbService, Is.Not.Null);
 
         // Call the service
-        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
+        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result;
 
         // Do the tests
-        Assert.That(retorno, Is.Null);
+        Assert.Multiple(() =>
+        {
+            Assert.That(retorno.Data, Is.Null);
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE));
+            Assert.That(retorno.Success, Is.False);
+        });
     }
 }
