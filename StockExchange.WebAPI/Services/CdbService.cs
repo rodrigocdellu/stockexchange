@@ -86,9 +86,9 @@ public class CdbService : ICdbService
         }
         
         // Valida o formato e define a mensagem
-        if (meses <= 0)
+        if (meses < 1)
         {
-            mensagemValidacao = $"O parâmetro 'meses' não pode ser negativo. Valor fornecido: '{meses}'";
+            mensagemValidacao = $"O parâmetro 'meses' deve ser maior que zero. Valor fornecido: '{meses}'";
 
             return false;
         }
