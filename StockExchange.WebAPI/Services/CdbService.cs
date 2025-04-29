@@ -157,8 +157,8 @@ public class CdbService : ICdbService
         imposto = lucro * CdbService.ObterAliquotaImposto(meses);
 
         // Prepara o objeto investimento
-        this.Retorno.ResultadoBruto = lucro;
-        this.Retorno.ResultadoLiquido = lucro - imposto;
+        this.Retorno.ResultadoBruto = investimento + lucro;
+        this.Retorno.ResultadoLiquido = investimento + lucro - imposto;
     }
 
     public Task<ServiceResultHelper<Retorno>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
