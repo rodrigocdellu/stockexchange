@@ -4,94 +4,94 @@
             {
                 "investimento": "1",
                 "meses": "1",
-                "resultadoBruto": "0.00972",
-                "resultadoLiquido": "0.00753300"
+                "resultadoBruto": "1.00972",
+                "resultadoLiquido": "1.00753300"
             },
             {
                 "investimento": "2",
                 "meses": "2",
-                "resultadoBruto": "0.0390689568",
-                "resultadoLiquido": "0.0302784415200"
+                "resultadoBruto": "2.0390689568",
+                "resultadoLiquido": "2.0302784415200"
             },
             {
                 "investimento": "3",
                 "meses": "3",
-                "resultadoBruto": "0.088333060590144",
-                "resultadoLiquido": "0.068458121957361600"
+                "resultadoBruto": "3.088333060590144",
+                "resultadoLiquido": "3.068458121957361600"
             },
             {
                 "investimento": "1",
                 "meses": "5",
-                "resultadoBruto": "0.0495540120180826864069632",
-                "resultadoLiquido": "0.0384043593140140819653964800"
+                "resultadoBruto": "1.0495540120180826864069632",
+                "resultadoLiquido": "1.0384043593140140819653964800"
             },
             {
                 "investimento": "1",
                 "meses": "6",
-                "resultadoBruto": "0.0597556770148984501188388823",
-                "resultadoLiquido": "0.0463106496865462988421001338"
+                "resultadoBruto": "1.0597556770148984501188388823",
+                "resultadoLiquido": "1.0463106496865462988421001338"
             },
             {
                 "investimento": "1",
                 "meses": "7",
-                "resultadoBruto": "0.0700565021954832630539939962",
-                "resultadoLiquido": "0.0560452017563866104431951970"
+                "resultadoBruto": "1.0700565021954832630539939962",
+                "resultadoLiquido": "1.0560452017563866104431951970"
             },
             {
                 "investimento": "1",
                 "meses": "11",
-                "resultadoBruto": "0.1122708225699260816702686131",
-                "resultadoLiquido": "0.0898166580559408653362148905"
+                "resultadoBruto": "1.1122708225699260816702686131",
+                "resultadoLiquido": "1.0898166580559408653362148905"
             },
             {
                 "investimento": "1",
                 "meses": "12",
-                "resultadoBruto": "0.1230820949653057631841036240",
-                "resultadoLiquido": "0.0984656759722446105472828992"
+                "resultadoBruto": "1.1230820949653057631841036240",
+                "resultadoLiquido": "1.0984656759722446105472828992"
             },
             {
                 "investimento": "1",
                 "meses": "13",
-                "resultadoBruto": "0.1339984529283685352022531112",
-                "resultadoLiquido": "0.1105487236659040415418588167"
+                "resultadoBruto": "1.1339984529283685352022531112",
+                "resultadoLiquido": "1.1105487236659040415418588167"
             },
             {
                 "investimento": "1",
                 "meses": "23",
-                "resultadoBruto": "0.2491714455806164804757334981",
-                "resultadoLiquido": "0.2055664426040085963924801359"
+                "resultadoBruto": "1.2491714455806164804757334981",
+                "resultadoLiquido": "1.2055664426040085963924801359"
             },
             {
                 "investimento": "1",
                 "meses": "24",
-                "resultadoBruto": "0.2613133920316600726659576277",
-                "resultadoLiquido": "0.2155835484261195599494150429"
+                "resultadoBruto": "1.2613133920316600726659576277",
+                "resultadoLiquido": "1.2155835484261195599494150429"
             },
             {
                 "investimento": "1",
                 "meses": "25",
-                "resultadoBruto": "0.2735733582022078085722707358",
-                "resultadoLiquido": "0.2325373544718766372864301254"
+                "resultadoBruto": "1.2735733582022078085722707358",
+                "resultadoLiquido": "1.2325373544718766372864301254"
             }
         ],
         "retornosInvalidos": [
             {
                 "investimento": "3",
                 "meses": "3",
-                "resultadoBruto": "0.00972",
-                "resultadoLiquido": "0.00753300"
+                "resultadoBruto": "3.00972",
+                "resultadoLiquido": "3.00753300"
             },
             {
                 "investimento": "1",
                 "meses": "1",
-                "resultadoBruto": "0.0390689568",
-                "resultadoLiquido": "0.0302784415200"
+                "resultadoBruto": "1.0390689568",
+                "resultadoLiquido": "1.0302784415200"
             },
             {
                 "investimento": "2",
                 "meses": "2",
-                "resultadoBruto": "0.088333060590144",
-                "resultadoLiquido": "0.068458121957361600"
+                "resultadoBruto": "2.088333060590144",
+                "resultadoLiquido": "2.068458121957361600"
             }
         ]
     }
