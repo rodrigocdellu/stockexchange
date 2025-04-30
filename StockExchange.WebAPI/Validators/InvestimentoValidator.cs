@@ -29,9 +29,9 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDTO>
 
     private const string? MESES_NOTEMPTY_MESSAGE = @"O parâmetro 'meses' não pode estar vazio. Valor fornecido: '{PropertyValue}'.";
 
-    private const string? MESES_TYPE_MESSAGE = @"O parâmetro 'meses' deve ser do tipo decimal. Valor fornecido: '{PropertyValue}'.";
+    private const string? MESES_TYPE_MESSAGE = @"O parâmetro 'meses' deve ser do tipo uint. Valor fornecido: '{PropertyValue}'.";
 
-    private const string? MESES_GREATERTHAN_MESSAGE = @"O parâmetro 'meses' deve ser maior que 0.00. Valor fornecido: '{PropertyValue}'.";
+    private const string? MESES_INCLUSIVEBETWEEN_MESSAGE = @"O parâmetro 'meses' deve ser maior que 0 e menor do que 12001. Valor fornecido: '{PropertyValue}'.";
 
     #endregion
 
@@ -48,6 +48,6 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDTO>
             .NotNull().WithMessage(InvestimentoValidator.MESES_NOTNULL_MESSAGE)
             .NotEmpty().WithMessage(InvestimentoValidator.MESES_NOTEMPTY_MESSAGE)
             .Must(valor => uint.TryParse(valor.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out _)).WithMessage(InvestimentoValidator.MESES_TYPE_MESSAGE)
-            .GreaterThan(0U).WithMessage(InvestimentoValidator.MESES_GREATERTHAN_MESSAGE);
+            .InclusiveBetween(1U, 12000U).WithMessage(InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MESSAGE);
     }
 }
