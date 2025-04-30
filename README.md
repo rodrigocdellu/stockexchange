@@ -84,7 +84,7 @@ cd stockexchange/StockExchange.WebAPI/; code .
 cd stockexchange/StockExchange.AngularUI/; code .
 ```
 
-3. **Opcional**: Caso quira, você pode abrir todos os projetos no Visual Studio 2022 Community através do arquivo [`StockExchange.sln`](./stockexchange.sln).
+3. **Opcional**: Caso queira, você pode abrir todos os projetos no Visual Studio 2022 Community através do arquivo [`StockExchange.sln`](./stockexchange.sln).
 
 
 ## 🐳 Ambiente de Produção (Docker)
@@ -118,12 +118,12 @@ docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
 - Back-end .NET Core: [http://localhost:7200](http://localhost:7200)
 - Front-end Angular: [http://localhost:7000](http://localhost:7000)
 
-6. (Opicional) Caso não consiga construir as imagens, você pode baixá-las do meu Docker Hub:
+6. **Opcional**: Caso não consiga construir as imagens, você pode baixá-las do meu Docker Hub:
 
 - [Back-end .NET Core](https://hub.docker.com/r/rodrigocdellu/stockexchange.webapi)
 - [Front-end Angular](https://hub.docker.com/r/rodrigocdellu/stockexchange.angularui)
 
-7. (Opicional) Após baixadas as imagens do meu Docker Hub, é só executar os seguintes comnandos:
+7. **Opcional**: Após baixadas as imagens do meu Docker Hub, é só executar os seguintes comnandos:
 
 ```
 docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange.webapi:1.0; docker run --name stockexchange.angularui -d -p 7000:80 rodrigocdellu/stockexchange.angularui:1.0
