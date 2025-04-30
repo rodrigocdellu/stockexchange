@@ -7,7 +7,7 @@ namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
-    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0.00. Valor fornecido: '0'.\r\n";
+    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 12001. Valor fornecido: '0'.\r\n";
     private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.\r\n";
 
     private ICdbService? _CdbService;
