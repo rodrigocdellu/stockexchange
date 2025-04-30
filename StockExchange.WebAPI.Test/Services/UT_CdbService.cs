@@ -1,7 +1,6 @@
 ﻿using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 using StockExchange.WebAPI.Test.Helpers;
-using StockExchange.WebAPI.Validators;
 
 namespace StockExchange.WebAPI.Test.Services;
 
