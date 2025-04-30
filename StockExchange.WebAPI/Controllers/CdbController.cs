@@ -21,6 +21,12 @@ public sealed class CdbController : ControllerBase
     {
         try
         {
+            // Validação adicional contra abuso
+            if (investimento.Meses < 1 || investimento.Meses > 360)
+            {
+                return BadRequest(new { error = "O número de meses deve estar entre 1 e 360." });
+            }
+
             // Check Fluent Validation
             if (ModelState.IsValid)
             {
