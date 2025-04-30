@@ -129,7 +129,7 @@ docker run --name stockexchange.angularui -d -p 7000:80 stockexchange.angularui
 docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange.webapi:1.0; docker run --name stockexchange.angularui -d -p 7000:80 rodrigocdellu/stockexchange.angularui:1.0
 ```
 
-## ❤ Clean Code
+## 🤍 Clean Code
 
 Aqui disponibilizo os [resultados da analise estática de cógido](https://sonarcloud.io/project/overview?id=rodrigocdellu_stockexchange) com as configurações padrão do SonarQube Cloud.
 
