@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(options => { // 2025/04/20 - For Swagger to run i
         TermsOfService = new Uri(TERMSOFSERVICEURI)
     });
 });
-builder.Services.AddScoped<IValidator<InvestimentoDto>, InvestimentoValidator>(); // 2025/04/30 - Required for Fluent Validation
+builder.Services.AddTransient<IValidator<InvestimentoDto>, InvestimentoValidator>(); // 2025/04/30 - Required for Fluent Validation
 builder.Services.AddSingleton<IApplicationService, ApplicationService>(); // 2025/04/22 - To deal with application information
 builder.Services.AddTransient<ICdbService, CdbService>(); // 2025/04/22 - Add the Dependency Injection (IoC)
 
