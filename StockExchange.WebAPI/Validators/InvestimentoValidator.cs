@@ -9,6 +9,12 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDTO>
 {
     private const string REGEX = @"^[+-]?\d+([.,]\d+)?$"; // Regex para decimal com ponto ou vírgula
 
+    public const decimal VALOR_GREATERTHAN = 0.00m;
+
+    public const uint MESES_INCLUSIVEBETWEEN_MINIMUM = 1U;
+
+    public const uint MESES_INCLUSIVEBETWEEN_MAXIMUM = 12000U;
+
     #region Mensagens de Validação para Valor
 
     private const string? VALOR_NOTNULL_MESSAGE = @"O parâmetro 'valor' não pode ser nulo. Valor fornecido: '{PropertyValue}'.";
@@ -42,12 +48,12 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDTO>
             .NotEmpty().WithMessage(InvestimentoValidator.VALOR_NOTEMPTY_MESSAGE)
             .Must(valor => Regex.IsMatch(Convert.ToString(valor, CultureInfo.InvariantCulture) ?? String.Empty, InvestimentoValidator.REGEX, RegexOptions.None, TimeSpan.FromMilliseconds(1000))).WithMessage(InvestimentoValidator.VALOR_FORMAT_MESSAGE)
             .Must(valor => decimal.TryParse(valor.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out _)).WithMessage(InvestimentoValidator.VALOR_TYPE_MESSAGE)
-            .GreaterThan(0.00m).WithMessage(InvestimentoValidator.VALOR_GREATERTHAN_MESSAGE);
+            .GreaterThan(InvestimentoValidator.VALOR_GREATERTHAN).WithMessage(InvestimentoValidator.VALOR_GREATERTHAN_MESSAGE);
 
         RuleFor(investimento => investimento.Meses)
             .NotNull().WithMessage(InvestimentoValidator.MESES_NOTNULL_MESSAGE)
             .NotEmpty().WithMessage(InvestimentoValidator.MESES_NOTEMPTY_MESSAGE)
             .Must(valor => uint.TryParse(valor.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out _)).WithMessage(InvestimentoValidator.MESES_TYPE_MESSAGE)
-            .InclusiveBetween(1U, 12000U).WithMessage(InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MESSAGE);
+            .InclusiveBetween(InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MINIMUM, InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MAXIMUM).WithMessage(InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MESSAGE);
     }
 }

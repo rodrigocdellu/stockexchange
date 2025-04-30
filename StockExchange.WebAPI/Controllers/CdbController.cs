@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using StockExchange.WebAPI.Validators;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 
@@ -22,7 +23,8 @@ public sealed class CdbController : ControllerBase
         try
         {
             // Check Fluent Validation
-            if (ModelState.IsValid)
+            if (investimento.Meses > InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MINIMUM - 1 && investimento.Meses < InvestimentoValidator.MESES_INCLUSIVEBETWEEN_MAXIMUM + 1 && // Added by SonarQube security issue
+                ModelState.IsValid)
             {
                 // Await the service result
                 var result = await this._CDBService.SolicitarCalculoInvestimento(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
