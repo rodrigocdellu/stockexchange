@@ -7,7 +7,8 @@ namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
-    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 12001. Valor fornecido: '0'.\r\n";
+    private const string? TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '0'.\r\n";
+    private const string? TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '1201'.\r\n";
     private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.\r\n";
 
     private ICdbService? _CdbService;
@@ -109,7 +110,7 @@ public class UT_CdbService
     }
 
     [Test]
-    public void Test_MesesZero()
+    public void Test_MesesMinimo()
     {
         // Load data
         var investimento = new InvestimentoDto() { Valor = 1m, Meses = 0U };
@@ -124,7 +125,28 @@ public class UT_CdbService
         Assert.Multiple(() =>
         {
             Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESZERO_MESSAGE));
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE));
+            Assert.That(retorno.Success, Is.False);
+        });
+    }
+
+    [Test]
+    public void Test_MesesMaximo()
+    {
+        // Load data
+        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1201U };
+
+        // Do the initial test
+        Assert.That(this._CdbService, Is.Not.Null);
+
+        // Call the service
+        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento).Result;
+
+        // Do the tests
+        Assert.Multiple(() =>
+        {
+            Assert.That(retorno.Data, Is.Null);
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE));
             Assert.That(retorno.Success, Is.False);
         });
     }
