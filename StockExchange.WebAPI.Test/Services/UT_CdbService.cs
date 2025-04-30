@@ -50,7 +50,7 @@ public class UT_CdbService
                 TestHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                 // Call the service
-                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDTO() { Valor = investimento, Meses = meses }).Result.Data;
+                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
 
                 // If there is no data, the test fail
                 if (retorno == null)
@@ -92,7 +92,7 @@ public class UT_CdbService
                 TestHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                 // Call the service
-                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDTO() { Valor = investimento, Meses = meses }).Result.Data;
+                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
 
                 // If there is no data, the test fail
                 if (retorno == null)
@@ -112,7 +112,7 @@ public class UT_CdbService
     public void Test_MesesZero()
     {
         // Load data
-        var investimento = new InvestimentoDTO() { Valor = 1m, Meses = 0U };
+        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 0U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
@@ -133,7 +133,7 @@ public class UT_CdbService
     public void Test_InvestimentoNegativo()
     {
         // Load data
-        var investimento = new InvestimentoDTO() { Valor = -1m, Meses = 1U };
+        var investimento = new InvestimentoDto() { Valor = -1m, Meses = 1U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
