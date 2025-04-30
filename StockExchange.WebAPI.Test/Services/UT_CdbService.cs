@@ -18,7 +18,7 @@ public class UT_CdbService
     public void Setup()
     {
         // Create the service
-        this._CdbService = new CdbService(new InvestimentoValidator());
+        this._CdbService = new CdbService();
 
         // Load data
         this.Samples = TestHelper.LoadData();        

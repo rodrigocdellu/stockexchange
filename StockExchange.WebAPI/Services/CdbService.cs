@@ -8,13 +8,13 @@ namespace StockExchange.WebAPI.Services;
 
 public class CdbService : ICdbService
 {
-    private readonly IValidator<InvestimentoDto> _Validator;
+    private readonly IValidator<InvestimentoDto> _InvestimentoValidator;
 
     public RetornoDto Retorno { get; set; }
 
     public CdbService()
     {
-        this._Validator = new InvestimentoValidator();
+        this._InvestimentoValidator = new InvestimentoValidator();
         this.Retorno = new RetornoDto();
     }    
 
@@ -105,7 +105,7 @@ public class CdbService : ICdbService
         try
         {
             // Check Fluent Validation
-            var validationResult = this._Validator.Validate(investimento);
+            var validationResult = this._InvestimentoValidator.Validate(investimento);
 
             // If valid
             if (validationResult.IsValid)
