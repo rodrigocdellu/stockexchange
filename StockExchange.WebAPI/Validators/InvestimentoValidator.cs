@@ -5,7 +5,7 @@ using StockExchange.WebAPI.DTOs;
 
 namespace StockExchange.WebAPI.Validators;
 
-public class InvestimentoValidator : AbstractValidator<InvestimentoDTO>
+public class InvestimentoValidator : AbstractValidator<InvestimentoDto>
 {
     private const string REGEX = @"^[+-]?\d+([.,]\d+)?$"; // Regex para decimal com ponto ou vírgula
 

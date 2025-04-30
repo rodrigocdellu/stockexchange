@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace StockExchange.WebAPI.DTOs;
 
-public class InvestimentoDTO
+public class InvestimentoDto
 {
     [JsonPropertyName("valor")]
     public decimal? Valor { get; set; }
@@ -10,7 +10,7 @@ public class InvestimentoDTO
     [JsonPropertyName("meses")]
     public uint? Meses { get; set; }
 
-    public InvestimentoDTO()
+    public InvestimentoDto()
     {
         this.Valor = decimal.Zero;
         this.Meses = 0U;

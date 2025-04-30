@@ -7,17 +7,17 @@ namespace StockExchange.WebAPI.Services;
 
 public class CdbService : ICdbService
 {
-    private readonly IValidator<InvestimentoDTO>? _Validator;
+    private readonly IValidator<InvestimentoDto>? _Validator;
 
-    public RetornoDTO Retorno { get; set; }
+    public RetornoDto Retorno { get; set; }
 
     public CdbService()
     {
         this._Validator = null;
-        this.Retorno = new RetornoDTO();
+        this.Retorno = new RetornoDto();
     }
 
-    public CdbService(IValidator<InvestimentoDTO> validator)
+    public CdbService(IValidator<InvestimentoDto> validator)
         : this()
     {
         this._Validator = validator;
@@ -88,7 +88,7 @@ public class CdbService : ICdbService
         this.Retorno.ResultadoLiquido = investimento + lucro - imposto;
     }
 
-    public Task<ServiceResultHelper<RetornoDTO>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
+    public Task<ServiceResultHelper<RetornoDto>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
     {
         try
         {
@@ -96,16 +96,16 @@ public class CdbService : ICdbService
             this.Calcula(investimento, meses);
 
             // Retorna o investimento
-            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Ok(this.Retorno));
+            return Task.FromResult(ServiceResultHelper<RetornoDto>.Ok(this.Retorno));
         }
         catch (Exception exception)
         {
             // Retorna o exceção para os cálculos de investimento
-            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(exception.Message));
+            return Task.FromResult(ServiceResultHelper<RetornoDto>.Fail(exception.Message));
         }
     }
 
-    public Task<ServiceResultHelper<RetornoDTO>> SolicitarCalculoInvestimento(InvestimentoDTO investimento)
+    public Task<ServiceResultHelper<RetornoDto>> SolicitarCalculoInvestimento(InvestimentoDto investimento)
     {
         try
         {
@@ -126,13 +126,13 @@ public class CdbService : ICdbService
                     validationResultErros.AppendLine(error.ErrorMessage);
 
                 // Returns or exception for fluent validation
-                return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(validationResultErros.ToString()));
+                return Task.FromResult(ServiceResultHelper<RetornoDto>.Fail(validationResultErros.ToString()));
             }            
         }
         catch (Exception exception)
         {
             // Returns the exception for investment calculations
-            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(exception.Message));
+            return Task.FromResult(ServiceResultHelper<RetornoDto>.Fail(exception.Message));
         }
     }
 }

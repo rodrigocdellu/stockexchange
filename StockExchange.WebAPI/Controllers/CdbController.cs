@@ -18,7 +18,7 @@ public sealed class CdbController : ControllerBase
     }
     
     [HttpGet("SolicitarCalculoInvestimento")]
-    public async Task<IActionResult> SolicitarCalculoInvestimento([FromQuery]InvestimentoDTO investimento)
+    public async Task<IActionResult> SolicitarCalculoInvestimento([FromQuery]InvestimentoDto investimento)
     {
         try
         {
