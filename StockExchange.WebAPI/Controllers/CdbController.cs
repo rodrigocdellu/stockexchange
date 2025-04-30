@@ -27,7 +27,7 @@ public sealed class CdbController : ControllerBase
                 ModelState.IsValid)
             {
                 // Await the service result
-                var result = await this._CDBService.SolicitarCalculoInvestimento(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
+                var result = await this._CDBService.SolicitarCalculoInvestimento(investimento);
 
                 // Validate the result
                 if (!result.Success)

@@ -13,7 +13,7 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDto>
 
     public const uint MESES_INCLUSIVEBETWEEN_MINIMUM = 1U;
 
-    public const uint MESES_INCLUSIVEBETWEEN_MAXIMUM = 12000U;
+    public const uint MESES_INCLUSIVEBETWEEN_MAXIMUM = 1200U;
 
     #region Mensagens de Validação para Valor
 
@@ -37,7 +37,7 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDto>
 
     private const string? MESES_TYPE_MESSAGE = @"O parâmetro 'meses' deve ser do tipo uint. Valor fornecido: '{PropertyValue}'.";
 
-    private const string? MESES_INCLUSIVEBETWEEN_MESSAGE = @"O parâmetro 'meses' deve ser maior que 0 e menor do que 12001. Valor fornecido: '{PropertyValue}'.";
+    private const string? MESES_INCLUSIVEBETWEEN_MESSAGE = @"O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '{PropertyValue}'.";
 
     #endregion
 

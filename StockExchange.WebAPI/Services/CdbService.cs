@@ -81,24 +81,7 @@ public class CdbService : ICdbService
         // Prepara o objeto investimento
         this.Retorno.ResultadoBruto = investimento + lucro;
         this.Retorno.ResultadoLiquido = investimento + lucro - imposto;
-    }
-
-    public Task<ServiceResultHelper<RetornoDto>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
-    {
-        try
-        {
-            // Realiza os cálculos de investimento
-            this.Calcula(investimento, meses);
-
-            // Retorna o investimento
-            return Task.FromResult(ServiceResultHelper<RetornoDto>.Ok(this.Retorno));
-        }
-        catch (Exception exception)
-        {
-            // Retorna o exceção para os cálculos de investimento
-            return Task.FromResult(ServiceResultHelper<RetornoDto>.Fail(exception.Message));
-        }
-    }
+    }    
 
     public Task<ServiceResultHelper<RetornoDto>> SolicitarCalculoInvestimento(InvestimentoDto investimento)
     {
@@ -109,8 +92,13 @@ public class CdbService : ICdbService
 
             // If valid
             if (validationResult.IsValid)
-                // Call the calculation
-                return this.SolicitarCalculoInvestimento(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
+            {
+                // Performs investment calculations
+                this.Calcula(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
+
+                // Return the investment
+                return Task.FromResult(ServiceResultHelper<RetornoDto>.Ok(this.Retorno));
+            }
             else
             {
                 // Create a StringBuilder to catch the validation erros
