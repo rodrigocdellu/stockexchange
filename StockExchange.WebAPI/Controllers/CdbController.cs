@@ -1,5 +1,6 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 
 namespace StockExchange.WebAPI.Controllers;
@@ -16,19 +17,26 @@ public sealed class CdbController : ControllerBase
     }
     
     [HttpGet("SolicitarCalculoInvestimento")]
-    public async Task<IActionResult> SolicitarCalculoInvestimento(decimal investimento, uint meses)
+    public async Task<IActionResult> SolicitarCalculoInvestimento([FromQuery]InvestimentoDTO investimento)
     {
         try
         {
-            // Await the service result
-            var result = await this._CDBService.SolicitarCalculoInvestimento(investimento, meses);
+            // Check Fluent Validation
+            if (ModelState.IsValid)
+            {
+                // Await the service result
+                var result = await this._CDBService.SolicitarCalculoInvestimento(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
 
-            // Validate the result
-            if (!result.Success)
-                return BadRequest(new { error = result.ErrorMessage });
+                // Validate the result
+                if (!result.Success)
+                    return BadRequest(new { error = result.ErrorMessage });
 
-            // Return the result
-            return Ok(result.Data);
+                // Return the result
+                return Ok(result.Data);
+            }
+            else
+                // Return Fluent Validation erros
+                return BadRequest(ModelState);            
         }
         catch (Exception exception)
         {

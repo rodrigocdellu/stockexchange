@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace StockExchange.WebAPI.Models;
+namespace StockExchange.WebAPI.DTOs;
 
-public class Retorno
+public class RetornoDTO
 {
     [JsonPropertyName("resultadoBruto")]
     public decimal? ResultadoBruto { get; set; }
@@ -10,7 +10,7 @@ public class Retorno
     [JsonPropertyName("resultadoLiquido")]
     public decimal? ResultadoLiquido { get; set; }
 
-    public Retorno()
+    public RetornoDTO()
     {
         this.ResultadoBruto = decimal.Zero;
         this.ResultadoLiquido = decimal.Zero;

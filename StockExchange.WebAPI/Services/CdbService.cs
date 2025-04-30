@@ -1,100 +1,16 @@
-using System.Globalization;
-using System.Text.RegularExpressions;
 using StockExchange.WebAPI.Helpers;
-using StockExchange.WebAPI.Models;
+using StockExchange.WebAPI.DTOs;
 
 namespace StockExchange.WebAPI.Services;
 
 public class CdbService : ICdbService
 {
-    public Retorno Retorno { get; set; }
+    public RetornoDTO Retorno { get; set; }
     
     public CdbService()
     {
-        this.Retorno = new Retorno();
-    }
-
-    private static bool ValidaEstrutura(ref uint meses, ref decimal investimento, out string? mensagemValidacao)
-    {
-        var investimentoValidado = 0m; // Define variável para testar o tipo do parâmetro investimento
-        var mesesValidado = 0U; // Define variável para testar o tipo do parâmetro meses
-        var regex = @"^[+-]?\d+([.,]\d+)?$"; // Regex para decimal com ponto ou vírgula
-        var estaValido = false; // O estado inicial é inválido
-
-        // A mensagem de validação inicial é vazia
-        mensagemValidacao = String.Empty;
-        
-        #region Validação de Formato
-        
-        // Verifica o formato do parâmetro investimento
-        estaValido = Regex.IsMatch(investimento.ToString(CultureInfo.InvariantCulture), regex, RegexOptions.None, TimeSpan.FromMilliseconds(1000));
-        
-        // Valida o formato e define a mensagem
-        if (!estaValido)
-        {
-            mensagemValidacao = $"O parâmetro 'investimento' possui um formato inválido. Valor fornecido: '{investimento}'";
-
-            return estaValido;
-        }
-
-        #endregion
-
-        #region Validação de Tipo
-
-        // Verifica o tipo do parâmetro investimento
-        estaValido = decimal.TryParse(investimento.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out investimentoValidado);
-
-        // Valida o tipo e define a mensagem
-        if (!estaValido)
-        {
-            mensagemValidacao = $"O parâmetro 'investimento' possui um tipo inválido. Valor fornecido: '{investimento}'";
-
-            return estaValido;
-        }
-
-        // Verifica o tipo do parâmetro investimento
-        estaValido = uint.TryParse(meses.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture, out mesesValidado);
-
-        // Valida o tipo e define a mensagem
-        if (!estaValido)
-        {
-            mensagemValidacao = $"O parâmetro 'meses' possui um tipo inválido. Valor fornecido: '{meses}'";
-
-            return estaValido;
-        }
-
-        #endregion
-
-        // Atualiza as referências com os valores validados
-        meses = mesesValidado;
-        investimento = investimentoValidado;
-
-        return estaValido;
-    }
-
-    private static bool ValidaNegocio(ref uint meses, ref decimal investimento, out string? mensagemValidacao)
-    {
-        // A mensagem de validação inicial é vazia
-        mensagemValidacao = String.Empty;
-
-        // Valida o valor e define a mensagem
-        if (investimento <= 0)
-        {
-            mensagemValidacao = $"O parâmetro 'investimento' não pode ser negativo. Valor fornecido: '{investimento}'";
-
-            return false;
-        }
-        
-        // Valida o valor e define a mensagem
-        if (meses < 1)
-        {
-            mensagemValidacao = $"O parâmetro 'meses' deve ser maior que zero. Valor fornecido: '{meses}'";
-
-            return false;
-        }
-
-        return true;
-    }
+        this.Retorno = new RetornoDTO();
+    }    
 
     private static decimal ObterAliquotaImposto(uint prazoMeses)
     {
@@ -161,37 +77,20 @@ public class CdbService : ICdbService
         this.Retorno.ResultadoLiquido = investimento + lucro - imposto;
     }
 
-    public Task<ServiceResultHelper<Retorno>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
+    public Task<ServiceResultHelper<RetornoDTO>> SolicitarCalculoInvestimento(decimal investimento, uint meses)
     {
-        // Define a mensagem de validação
-        string? mensagemValidacao;
-
-        // Aplica regras de validação estrutural
-        if (CdbService.ValidaEstrutura(ref meses, ref investimento, out mensagemValidacao))
+        try
         {
-            // Aplica regras de validação do negócio
-            if (CdbService.ValidaNegocio(ref meses, ref investimento, out mensagemValidacao))
-            {
-                try
-                {
-                    // Realiza os cálculos de investimento
-                    this.Calcula(investimento, meses);
-                }
-                catch (Exception exception)
-                {
-                    // Retorna o exceção para os cálculos de investimento
-                    return Task.FromResult(ServiceResultHelper<Retorno>.Fail(exception.Message));
-                }
-        
-                // Retorna o investimento
-                return Task.FromResult(ServiceResultHelper<Retorno>.Ok(this.Retorno));
-            }
-            else
-                // Retorna o exceção para validação estrutural
-                return Task.FromResult(ServiceResultHelper<Retorno>.Fail(mensagemValidacao));
+            // Realiza os cálculos de investimento
+            this.Calcula(investimento, meses);
+
+            // Retorna o investimento
+            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Ok(this.Retorno));
         }
-        else
-            // Retorna o exceção para validação estrutural
-            return Task.FromResult(ServiceResultHelper<Retorno>.Fail(mensagemValidacao));
+        catch (Exception exception)
+        {
+            // Retorna o exceção para os cálculos de investimento
+            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(exception.Message));
+        }
     }
 }

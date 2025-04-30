@@ -1,5 +1,8 @@
-// 2025/04/20 - Required for Dependency Injection (IoC)
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models; // 2025/04/20 - Required for Dependency Injection (IoC)
+using FluentValidation; // 2025/04/30 - Required for Fluent Validation
+using FluentValidation.AspNetCore; // 2025/04/30 - Required for Fluent Validation
+using StockExchange.WebAPI.Validators;
+using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 
 const string POLICYFORCORS = "StockExchangePolicy"; // 2025/04/20 - Define the policy name
@@ -10,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container. Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers(); // 2025/04/20 - Add controllers for automatic mapping
+builder.Services.AddFluentValidationAutoValidation(); // 2025/04/30 - Required for Fluent Validation
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => { // 2025/04/20 - For Swagger to run in the production environment
     options.SwaggerDoc("v1", new OpenApiInfo{
@@ -19,6 +23,7 @@ builder.Services.AddSwaggerGen(options => { // 2025/04/20 - For Swagger to run i
         TermsOfService = new Uri(TERMSOFSERVICEURI)
     });
 });
+builder.Services.AddScoped<IValidator<InvestimentoDTO>, InvestimentoValidator>(); // 2025/04/30 - Required for Fluent Validation
 builder.Services.AddSingleton<IApplicationService, ApplicationService>(); // 2025/04/22 - To deal with application information
 builder.Services.AddTransient<ICdbService, CdbService>(); // 2025/04/22 - Add the Dependency Injection (IoC)
 
