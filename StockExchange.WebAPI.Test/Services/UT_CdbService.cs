@@ -1,12 +1,14 @@
-﻿using StockExchange.WebAPI.Services;
+﻿using StockExchange.WebAPI.DTOs;
+using StockExchange.WebAPI.Services;
 using StockExchange.WebAPI.Test.Helpers;
+using StockExchange.WebAPI.Validators;
 
 namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
-    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que zero. Valor fornecido: '0'";
-    private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'investimento' não pode ser negativo. Valor fornecido: '-1'";
+    private const string? TEST_MESESZERO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0.00. Valor fornecido: '0'.\r\n";
+    private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.\r\n";
 
     private ICdbService? _CdbService;
 
@@ -15,11 +17,11 @@ public class UT_CdbService
     [SetUp]
     public void Setup()
     {
-        // Load data
-        this.Samples = TestHelper.LoadData();
-
         // Create the service
-        this._CdbService = new CdbService();
+        this._CdbService = new CdbService(new InvestimentoValidator());
+
+        // Load data
+        this.Samples = TestHelper.LoadData();        
     }
 
     [Test]
@@ -48,7 +50,7 @@ public class UT_CdbService
                 TestHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                 // Call the service
-                var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
+                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDTO() { Valor = investimento, Meses = meses }).Result.Data;
 
                 // If there is no data, the test fail
                 if (retorno == null)
@@ -90,7 +92,7 @@ public class UT_CdbService
                 TestHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                 // Call the service
-                var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result.Data;
+                var retorno = this._CdbService.SolicitarCalculoInvestimento(new InvestimentoDTO() { Valor = investimento, Meses = meses }).Result.Data;
 
                 // If there is no data, the test fail
                 if (retorno == null)
@@ -110,14 +112,13 @@ public class UT_CdbService
     public void Test_MesesZero()
     {
         // Load data
-        decimal investimento = 1m;
-        uint meses = 0U;
+        var investimento = new InvestimentoDTO() { Valor = 1m, Meses = 0U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
-
+        
         // Call the service
-        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result;
+        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento).Result;
 
         // Do the tests
         Assert.Multiple(() =>
@@ -132,14 +133,13 @@ public class UT_CdbService
     public void Test_InvestimentoNegativo()
     {
         // Load data
-        decimal investimento = -1m;
-        uint meses = 1U;
+        var investimento = new InvestimentoDTO() { Valor = -1m, Meses = 1U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
 
         // Call the service
-        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento, meses).Result;
+        var retorno = this._CdbService.SolicitarCalculoInvestimento(investimento).Result;
 
         // Do the tests
         Assert.Multiple(() =>

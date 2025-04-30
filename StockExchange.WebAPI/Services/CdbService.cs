@@ -1,16 +1,27 @@
-using StockExchange.WebAPI.Helpers;
+using System.Text;
+using FluentValidation;
 using StockExchange.WebAPI.DTOs;
+using StockExchange.WebAPI.Helpers;
 
 namespace StockExchange.WebAPI.Services;
 
 public class CdbService : ICdbService
 {
+    private readonly IValidator<InvestimentoDTO>? _Validator;
+
     public RetornoDTO Retorno { get; set; }
-    
+
     public CdbService()
     {
+        this._Validator = null;
         this.Retorno = new RetornoDTO();
-    }    
+    }
+
+    public CdbService(IValidator<InvestimentoDTO> validator)
+        : this()
+    {
+        this._Validator = validator;
+    }
 
     private static decimal ObterAliquotaImposto(uint prazoMeses)
     {
@@ -90,6 +101,37 @@ public class CdbService : ICdbService
         catch (Exception exception)
         {
             // Retorna o exceção para os cálculos de investimento
+            return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(exception.Message));
+        }
+    }
+
+    public Task<ServiceResultHelper<RetornoDTO>> SolicitarCalculoInvestimento(InvestimentoDTO investimento)
+    {
+        try
+        {
+            // Check Fluent Validation
+            var validationResult = this._Validator.Validate(investimento);
+
+            // If valid
+            if (validationResult.IsValid)
+                // Call the calculation
+                return this.SolicitarCalculoInvestimento(Convert.ToDecimal(investimento.Valor), Convert.ToUInt32(investimento.Meses));
+            else
+            {
+                // Create a StringBuilder to catch the validation erros
+                var validationResultErros = new StringBuilder();
+
+                // Catch the validation erros
+                foreach (var error in validationResult.Errors)
+                    validationResultErros.AppendLine(error.ErrorMessage);
+
+                // Returns or exception for fluent validation
+                return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(validationResultErros.ToString()));
+            }            
+        }
+        catch (Exception exception)
+        {
+            // Returns the exception for investment calculations
             return Task.FromResult(ServiceResultHelper<RetornoDTO>.Fail(exception.Message));
         }
     }
