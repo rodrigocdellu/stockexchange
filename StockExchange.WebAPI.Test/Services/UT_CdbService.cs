@@ -7,9 +7,11 @@ namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
-    private const string? TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '0'.\r\n";
-    private const string? TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '1201'.\r\n";
-    private const string? TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.\r\n";
+    private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '0'.";
+
+    private const string TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '1201'.";
+
+    private const string TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
 
     private ICdbService? _CdbService;
 
@@ -125,7 +127,7 @@ public class UT_CdbService
         Assert.Multiple(() =>
         {
             Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE));
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE.Concat(Environment.NewLine)));
             Assert.That(retorno.Success, Is.False);
         });
     }
@@ -146,7 +148,7 @@ public class UT_CdbService
         Assert.Multiple(() =>
         {
             Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE));
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE.Concat(Environment.NewLine)));
             Assert.That(retorno.Success, Is.False);
         });
     }
@@ -167,7 +169,7 @@ public class UT_CdbService
         Assert.Multiple(() =>
         {
             Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE));
+            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE.Concat(Environment.NewLine)));
             Assert.That(retorno.Success, Is.False);
         });
     }
