@@ -34,6 +34,9 @@
                 <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('min')">
                     O valor deve ser maior que 0.
                 </mat-error>
+                <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('max')">
+                    O valor deve ser menor que 1201.
+                </mat-error>
             </mat-form-field>
 
             <button class="buttonSpace" mat-raised-button color="primary" type="submit">Solicitar</button>

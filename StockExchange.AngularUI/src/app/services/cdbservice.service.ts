@@ -9,7 +9,7 @@ import { Retorno } from '../models/retorno.model';
     providedIn: 'root'
 })
 export class CdbserviceService {
-    // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?investimento=1&meses=2"
+    // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
     private readonly baseURL = "http://localhost";
     private readonly port = "5041" // change to 7200 to dockerize or 5041 to localhost
     private readonly controller = "Cdb";
@@ -22,7 +22,7 @@ export class CdbserviceService {
         let action = "SolicitarCalculoInvestimento";
 
         // Set the service url
-        let url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?investimento=${investimento}&meses=${meses}`;
+        let url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
         return this.http.get<Retorno>(url).pipe(
