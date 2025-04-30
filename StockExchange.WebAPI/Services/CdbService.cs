@@ -2,26 +2,21 @@ using System.Text;
 using FluentValidation;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Helpers;
+using StockExchange.WebAPI.Validators;
 
 namespace StockExchange.WebAPI.Services;
 
 public class CdbService : ICdbService
 {
-    private readonly IValidator<InvestimentoDto>? _Validator;
+    private readonly IValidator<InvestimentoDto> _Validator;
 
     public RetornoDto Retorno { get; set; }
 
     public CdbService()
     {
-        this._Validator = null;
+        this._Validator = new InvestimentoValidator();
         this.Retorno = new RetornoDto();
-    }
-
-    public CdbService(IValidator<InvestimentoDto> validator)
-        : this()
-    {
-        this._Validator = validator;
-    }
+    }    
 
     private static decimal ObterAliquotaImposto(uint prazoMeses)
     {
@@ -127,7 +122,7 @@ public class CdbService : ICdbService
 
                 // Returns or exception for fluent validation
                 return Task.FromResult(ServiceResultHelper<RetornoDto>.Fail(validationResultErros.ToString()));
-            }            
+            }          
         }
         catch (Exception exception)
         {
