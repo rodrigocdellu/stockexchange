@@ -10,7 +10,7 @@ public class UT_DateTimeHelper
     {
         // Load data
         var brasilianTimeZone = TestHelper.GetBrasilianTimeZone();
-        var brasilianTimeZoneDisplayName = DateTime.UtcNow.DisplayTimeZoneName();
+        var brasilianTimeZoneDisplayName = DateTime.UtcNow.PrepareTimeZoneForDockerization();
 
         // If there is no data, the test fail
         if (brasilianTimeZone == null)

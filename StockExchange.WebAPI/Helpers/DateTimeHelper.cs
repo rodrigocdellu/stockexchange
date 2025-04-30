@@ -29,7 +29,14 @@ public static class DateTimeHelper
         }        
     }
     
-    public static DateTime ToSaoPauloDateTime(this DateTime utcDateTime)
+    /// <summary>
+    /// O fuso horário do Docker Container aspnet:6.0 é UTC 0.
+    /// Portanto, ao se executar a aplicação a partir do container,
+    /// é necessário fazer este ajuste. Caso contrário, o horário ficará negativo para o Brasil.
+    /// Isso não afeta a execução fora do container docker.
+    /// </summary>
+    /// <returns>Um objeto DateTime UTC -3</returns>
+    public static DateTime PrepareDateTimeForDockerization(this DateTime utcDateTime)
     {
         // Get the target time zone
         var targetTimeZone = DateTimeHelper.GetBrasilianTimeZone();
@@ -43,7 +50,14 @@ public static class DateTimeHelper
             return TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, targetTimeZone);
     }
 
-    public static string DisplayTimeZoneName(this DateTime utcDateTime)
+    /// <summary>
+    /// O fuso horário do Docker Container aspnet:6.0 é UTC 0.
+    /// Portanto, ao se executar a aplicação a partir do container,
+    /// é necessário fazer este ajuste. Caso contrário, o horário ficará negativo para o Brasil.
+    /// Isso não afeta a execução fora do container docker.
+    /// </summary>
+    /// <returns>O DisplayName do fuso horário de um objeto DateTime UTC -3</returns>
+    public static string PrepareTimeZoneForDockerization(this DateTime utcDateTime)
     {
         // Get the target time zone
         var targetTimeZone = DateTimeHelper.GetBrasilianTimeZone();

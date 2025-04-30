@@ -16,9 +16,9 @@ public class ApplicationService : IApplicationService
         // Get the UTC now
         var utcNow = DateTime.UtcNow;
 
-        // Set the values
-        this.TimeZone = utcNow.DisplayTimeZoneName();
-        this.StartupTime = utcNow.ToSaoPauloDateTime();
+        // Set the values (considering docker container UTC 0)
+        this.TimeZone = utcNow.PrepareTimeZoneForDockerization();
+        this.StartupTime = utcNow.PrepareDateTimeForDockerization();
         this.FrameworkVersion = RuntimeInformation.FrameworkDescription;
     }
 }
