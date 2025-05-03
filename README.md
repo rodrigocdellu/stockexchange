@@ -1,7 +1,10 @@
 # 📈 StockExchange
 
-Aplicativo financeiro criado para avaliar conceitos de .NET Core (C#) e Angular (Typescript).
-Este repositório contém uma aplicação **back-end** desenvolvida em **.NET Core** e uma aplicação **front-end** desenvolvida em **Angular** para o setor financeiro com o objetivo de aprender e exercitar novas tecnologias e conceitos.
+Aplicativo desenvolvido como parte de um desafio prático voltado à avaliação de competências em **.NET Core (C#)** e **Angular (TypeScript)**, com foco em arquitetura de software, testes e performance. O projeto simula uma aplicação financeira para cálculo de investimentos em CDB, considerando regras tributárias e rendimentos mensais compostos.
+
+A solução é composta por uma **API REST em .NET Core (Back-end)**, responsável pela lógica de negócios e cálculos financeiros, e uma **Interface Web Responsiva em Angular (Front-end)**, que permite a entrada de dados e exibição dos resultados brutos e líquidos.
+
+Este repositório tem fins educacionais e demonstra a aplicação de princípios SOLID, cobertura de testes unitários, boas práticas de versionamento e qualidade de código. Tudo foi implementado com foco em aprendizado e consolidação de tecnologias modernas para o desenvolvimento web.
 
 ## 📦 Conteúdo do Repositório
 
