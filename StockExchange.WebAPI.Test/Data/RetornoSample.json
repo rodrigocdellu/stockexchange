@@ -3,21 +3,21 @@
         "retornosValidos": [
             {
                 "investimento": "1",
-                "meses": "1",
-                "resultadoBruto": "1.00972",
-                "resultadoLiquido": "1.00753300"
+                "meses": "2",
+                "resultadoBruto": "1.0195344784",
+                "resultadoLiquido": "1.0151392207600"
             },
             {
                 "investimento": "2",
-                "meses": "2",
-                "resultadoBruto": "2.0390689568",
-                "resultadoLiquido": "2.0302784415200"
+                "meses": "3",
+                "resultadoBruto": "2.058888707060096",
+                "resultadoLiquido": "2.045638747971574400"
             },
             {
                 "investimento": "3",
-                "meses": "3",
-                "resultadoBruto": "3.088333060590144",
-                "resultadoLiquido": "3.068458121957361600"
+                "meses": "4",
+                "resultadoBruto": "3.11835165793908019968",
+                "resultadoLiquido": "3.09172253490278715475200"
             },
             {
                 "investimento": "1",
@@ -77,21 +77,21 @@
         "retornosInvalidos": [
             {
                 "investimento": "3",
-                "meses": "3",
-                "resultadoBruto": "3.00972",
-                "resultadoLiquido": "3.00753300"
+                "meses": "4",
+                "resultadoBruto": "3.21835165793908019968",
+                "resultadoLiquido": "3.19172253490278715475200"
             },
             {
                 "investimento": "1",
-                "meses": "1",
-                "resultadoBruto": "1.0390689568",
-                "resultadoLiquido": "1.0302784415200"
+                "meses": "2",
+                "resultadoBruto": "1.1195344784",
+                "resultadoLiquido": "1.1151392207600"
             },
             {
                 "investimento": "2",
-                "meses": "2",
-                "resultadoBruto": "2.088333060590144",
-                "resultadoLiquido": "2.068458121957361600"
+                "meses": "3",
+                "resultadoBruto": "2.158888707060096",
+                "resultadoLiquido": "2.145638747971574400"
             }
         ]
     }

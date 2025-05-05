@@ -6,9 +6,9 @@ namespace StockExchange.WebAPI.Test.Services;
 
 public class UT_CdbService
 {
-    private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '0'.";
+    private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1'.";
 
-    private const string TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 0 e menor do que 1201. Valor fornecido: '1201'.";
+    private const string TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1201'.";
 
     private const string TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
 
@@ -110,11 +110,14 @@ public class UT_CdbService
         }
     }
 
+    /// <summary>
+    /// O valor mínimo de meses deve ser maior que 1.
+    /// </summary>
     [Test]
     public void Test_MesesMinimo()
     {
         // Load data
-        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 0U };
+        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
@@ -131,6 +134,9 @@ public class UT_CdbService
         });
     }
 
+    /// <summary>
+    /// Adicionado por conta de uma solicitação de segurança do SonarQube.
+    /// </summary>
     [Test]
     public void Test_MesesMaximo()
     {
@@ -156,7 +162,7 @@ public class UT_CdbService
     public void Test_InvestimentoNegativo()
     {
         // Load data
-        var investimento = new InvestimentoDto() { Valor = -1m, Meses = 1U };
+        var investimento = new InvestimentoDto() { Valor = -1m, Meses = 2U };
 
         // Do the initial test
         Assert.That(this._CdbService, Is.Not.Null);
