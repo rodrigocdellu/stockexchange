@@ -19,7 +19,7 @@ export class SolicitacaoComponent {
     constructor(private readonly formBuilder: FormBuilder, private readonly cdbserviceService: CdbserviceService, private readonly snackBar: MatSnackBar) {
         this.solicitacaoForm = this.formBuilder.group({
             investimento: ['', [Validators.required, Validators.min(0.01)]], // Only values greater than 0.01
-            meses: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(1), Validators.max(1200)]] // Only positive integers between 1 and 1200
+            meses: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(2), Validators.max(1200)]] // Only positive integers between 2 and 1200
         });
     }
 
@@ -95,7 +95,6 @@ export class SolicitacaoComponent {
 
         // Se válidos
         if (dados) {
-            
             // Realiza a requisição
             this.solicitarCalculoInvestimento(dados.investimento, dados.meses);
         }

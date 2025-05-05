@@ -32,7 +32,7 @@
                     Apenas números inteiros.
                 </mat-error>
                 <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('min')">
-                    O valor deve ser maior que 0.
+                    O valor deve ser maior que 1.
                 </mat-error>
                 <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('max')">
                     O valor deve ser menor que 1201.
