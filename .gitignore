@@ -1,4 +1,4 @@
-## Build Results (for .NET and Angular)
+# Build Results (for .NET and Angular)
 [Bb]in/
 [Oo]bj/
 [Dd]ebug/
@@ -12,6 +12,7 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 /dist/
+/dist-ssr/
 /out-tsc/
 /tmp/
 /bazel-out
@@ -19,18 +20,18 @@ artifacts/
 [Ll]og/
 [Ll]ogs/
 
-## .NET Core
+# .NET Core
 project.lock.json
 project.fragment.lock.json
 
-## ASP.NET Scaffolding
+# ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
-## NuGet Packages
+# NuGet Packages
 *.nupkg
 *.snupkg
 
-## Test Artifacts
+# Test Artifacts
 CodeCoverage/
 /coverage
 [Tt]est[Rr]esult*/
@@ -41,36 +42,40 @@ TestResult.xml
 nunit-*.xml
 testem.log
 
-## Angular Environment Files (optional)
+# Angular Environment Files (optional)
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
 
-## Angular Cache
+# Angular Cache
 /.angular/cache/
 .angular/
 
-## Node and Logs
+# Node and Logs
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 /libpeerconnection.log
+*.log
+logs
 
-## Temporary & Misc Files
+# Temporary & Misc Files
 ~$*
 *~
 .sass-cache/
 /typings
 /connect.lock
+*.local
 
-## System Files
+# System Files
 .DS_Store
 Thumbs.db
 
-## IDEs and Editors
+# IDEs and Editors
 .idea/
 .vscode/
-.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -84,9 +89,14 @@ Thumbs.db
 *.sublime-workspace
 .history/*
 
-## Visual Studio
+# Visual Studio
 .vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-## Gitignore reference:
+# Gitignore reference:
 # https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 # https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
