@@ -1,0 +1,75 @@
+:root {
+    --primary-white: #ffffff;          /* Mantém branco */
+    --secondary-white: #e3f2fd;        /* Azul 50 - Tom bem claro */
+    --primary-color: #0d47a1;          /* Azul 900 - Azul escuro */
+    --secondary-color: #1976d2;        /* Azul 700 - Azul principal */
+    --primary-black: #0b192f;          /* Azul muito escuro / Preto azulado */
+    --font-color: #333333;             /* Cinza - Tom da fonte */
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-white);
+    color: var(--primary-black);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    padding: 2rem 3rem;
+    max-width: 500px;
+    background-color: var(--primary-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.link {
+    color: var(--primary-black);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    color: var(--primary-color);
+}
+
+p {
+    margin: 0.5rem 0;
+    color: var(--font-color);
+    font-size: 1.1rem;
+}
+
+strong {
+    color: var(--secondary-color);
+}
+
+button {
+    margin-top: 40px;
+}
+
+.buttonSpace {
+    margin-right: 40px;
+}
+
+.internalCard {
+    margin-bottom: 48px;
+    padding-bottom: 29px;
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 12px;
+    color: var(--primary-color);
+}
