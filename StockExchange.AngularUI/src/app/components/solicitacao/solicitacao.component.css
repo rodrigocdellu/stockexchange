@@ -1,9 +1,9 @@
 :root {
     --primary-white: #ffffff;          /* Mantém branco */
-    --secondary-white: #ffebee;        /* Red 50 – Tom bem claro rosado */
-    --primary-color: #b71c1c;          /* Red 900 – Vermelho escuro */
-    --secondary-color: #e53935;        /* Red 600 – Vermelho padrão */
-    --primary-black: #2b0d0d;          /* Preto avermelhado – Tom escuro customizado */
+    --secondary-white: #fce4ec;        /* Pink 50 – Rosa claríssimo */
+    --primary-color: #f71561;            /* Tom solicitado – Rosa vibrante personalizado */
+    --secondary-color: #ec407a;          /* Pink 400 – Rosa forte, levemente mais claro */
+    --primary-black: #880e4f;          /* Pink 900 – Rosa escuro profundo */
     --font-color: #333333;             /* Cinza - Tom da fonte */
 }
 

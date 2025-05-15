@@ -1,9 +1,9 @@
 :root {
     --primary-white: #ffffff;          /* Mantém branco */
-    --secondary-white: #e3f2fd;        /* Azul 50 - Tom bem claro */
-    --primary-color: #0d47a1;          /* Azul 900 - Azul escuro */
-    --secondary-color: #1976d2;        /* Azul 700 - Azul principal */
-    --primary-black: #0b192f;          /* Azul muito escuro / Preto azulado */
+    --secondary-white: #e0f7fa;        /* Cyan 50 – Azul-ciano bem claro */
+    --primary-color: #5cd0ea;          /* Cor solicitada – Azul/ciano vibrante */
+    --secondary-color: #26c6da;        /* Cyan 400 – Tom complementar para destaques */
+    --primary-black: #004d40;          /* Cyan 900 – Azul-petróleo escuro para contraste */
     --font-color: #333333;             /* Cinza - Tom da fonte */
 }
   
