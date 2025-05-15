@@ -35,10 +35,10 @@ public sealed class HomeController : ControllerBase
                     <style>
                         :root {{
                             --primary-white: #ffffff;          /* Mantém branco */
-                            --secondary-white: #f3e5f5;        /* Purple 50 - Roxo claríssimo */
-                            --primary-red: #4a148c;            /* Purple 900 - Roxo escuro */
-                            --secondary-red: #8e24aa;          /* Purple 600 - Roxo padrão vibrante */
-                            --primary-black: #1e052f;          /* Preto arroxeado - Tom escuro customizado */
+                            --secondary-white: #ede7f6;        /* Deep Purple 50 - Fundo lavanda bem claro */
+                            --primary-red: #5a2c8f;            /* Tom central personalizado - Base roxa desejada */
+                            --secondary-red: #7e57c2;          /* Deep Purple 400 - Um pouco mais claro e vibrante */
+                            --primary-black: #311b53;          /* Deep Purple 900 - Roxo muito escuro */
                             --font-color: #333333;             /* Cinza - Tom da fonte */
                         }}
                         body {{
