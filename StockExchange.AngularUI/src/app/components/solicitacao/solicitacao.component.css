@@ -1,9 +1,10 @@
 :root {
-    --primary-white: #ffffff;
-    --secondary-white: #fcebea;
-    --primary-red: #b71c1c;
-    --secondary-red: #c62828;
-    --primary-black: #1a1a1a;
+    --primary-white: #ffffff;          /* Mantém branco */
+    --secondary-white: #ffebee;        /* Red 50 – Tom bem claro rosado */
+    --primary-color: #b71c1c;          /* Red 900 – Vermelho escuro */
+    --secondary-color: #e53935;        /* Red 600 – Vermelho padrão */
+    --primary-black: #2b0d0d;          /* Preto avermelhado – Tom escuro customizado */
+    --font-color: #333333;             /* Cinza - Tom da fonte */
 }
 
 body {
@@ -39,21 +40,21 @@ body {
 
 h1 {
     margin-bottom: 1rem;
-    color: var(--primary-red);
+    color: var(--primary-color);
 }
 
 h2 {
-    color: var(--primary-red);
+    color: var(--primary-color);
 }
 
 p {
     margin: 0.5rem 0;
-    color: #333;
+    color: var(--font-color);
     font-size: 1.1rem;
 }
 
 strong {
-    color: var(--secondary-red);
+    color: var(--secondary-color);
 }
 
 button {
@@ -70,5 +71,5 @@ button {
     border-style: dashed;
     border-width: 1px;
     border-radius: 12px;
-    color: var(--primary-red);
+    color: var(--primary-color);
 }

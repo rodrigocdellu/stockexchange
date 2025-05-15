@@ -28,14 +28,18 @@ public sealed class HomeController : ControllerBase
             <!DOCTYPE html>
             <html>
                 <head>
-                    <title>Status da StockExchange.WebAPI</title>
+                    <meta charset=""utf-8"">
+                    <title>StockExchange.WebAPI</title>
+                    <base href=""/"">
+                    <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
                     <style>
                         :root {{
-                            --primary-white: #ffffff;
-                            --secondary-white: #e6f0fa;
-                            --primary-blue: #1e4f91;
-                            --secondary-blue: #003366;
-                            --primary-black: #1a1a1a;
+                            --primary-white: #ffffff;          /* Mantém branco */
+                            --secondary-white: #f3e5f5;        /* Purple 50 - Roxo claríssimo */
+                            --primary-red: #4a148c;            /* Purple 900 - Roxo escuro */
+                            --secondary-red: #8e24aa;          /* Purple 600 - Roxo padrão vibrante */
+                            --primary-black: #1e052f;          /* Preto arroxeado - Tom escuro customizado */
+                            --font-color: #333333;             /* Cinza - Tom da fonte */
                         }}
                         body {{
                             margin: 0;
@@ -66,15 +70,15 @@ public sealed class HomeController : ControllerBase
                         }}
                         h1 {{
                             margin-bottom: 1rem;
-                            color: var(--primary-blue);
+                            color: var(--primary-color);
                         }}
                         p {{
                             margin: 0.5rem 0;
-                            color: #333;
+                            color: var(--font-color);
                             font-size: 1.1rem;
                         }}
                         strong {{
-                            color: var(--secondary-blue);
+                            color: var(--secondary-color);
                         }}
                     </style>
                 </head>
