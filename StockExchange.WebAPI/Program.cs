@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore; // 2025/04/30 - Required for Fluent Validatio
 using StockExchange.WebAPI.Validators;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
+using Microsoft.Extensions.FileProviders; // 2025/05/15 - Enable static files in the Public folder
 
 const string POLICYFORCORS = "StockExchangePolicy"; // 2025/04/20 - Define the policy name
 const string TERMSOFSERVICEURI = "https://github.com/rodrigocdellu"; // 2025/04/23 - SonarQube - Refactor your code not to use hardcoded absolute paths or URIs
@@ -40,6 +41,13 @@ builder.Services.AddCors(options =>
 
 // Build the application
 var app = builder.Build();
+
+// 2025/05/15 - Enable static files in the Public folder
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Public")),
+    RequestPath = "/public"
+});
 
 app.UseSwagger(); // 2025/04/20 - For Swagger to run in the production environment
 app.UseSwaggerUI(); // 2025/04/20 - For Swagger to run in the production environment

@@ -26,20 +26,59 @@ public sealed class HomeController : ControllerBase
 
         var html = $@"
             <!DOCTYPE html>
-            <html>
+            <html lang=""en"">
                 <head>
                     <meta charset=""utf-8"">
                     <title>StockExchange.WebAPI</title>
                     <base href=""/"">
                     <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+                    <link rel=""icon"" type=""image/x-icon"" href=""/public/favicon.ico"">
                     <style>
                         :root {{
                             --primary-white: #ffffff;          /* Mantém branco */
                             --secondary-white: #ede7f6;        /* Deep Purple 50 - Fundo lavanda bem claro */
-                            --primary-color: #5a2c8f;            /* Tom central personalizado - Base roxa desejada */
-                            --secondary-color: #7e57c2;          /* Deep Purple 400 - Um pouco mais claro e vibrante */
+                            --primary-color: #5a2c8f;          /* Tom Central Personalizado - Base roxa desejada */
+                            --secondary-color: #7e57c2;        /* Deep Purple 400 - Um pouco mais claro e vibrante */
                             --primary-black: #311b53;          /* Deep Purple 900 - Roxo muito escuro */
                             --font-color: #333333;             /* Cinza - Tom da fonte */
+                        }}
+                        .card, .grid {{
+                            box-shadow: 0 4px 8px rgba(49, 27, 83, 0.1);
+                            border-radius: 12px;
+                        }}
+                        .card {{
+                            padding: 2rem 3rem;
+                            max-width: 500px;
+                            background-color: var(--primary-white);                                                        
+                        }}
+                        .grid {{
+                            padding: 0.9rem 0.9rem;
+                            display: grid;
+                            grid-template-columns: max-content 1fr;
+                            row-gap: 0.5rem;
+                            column-gap: 0;
+                            border: 1px dotted var(--primary-black);
+                        }}
+                        .grid dt, .grid dd {{
+                            margin: 0 0.9rem;
+                        }}
+                        .grid dt {{
+                            text-align: right;
+                            font-weight: bold;
+                            color: var(--secondary-color);
+                        }}
+                        .grid dd {{
+                            text-align: left;
+                        }}                        
+                        .link {{
+                            text-decoration: none;
+                            color: var(--font-color);
+                        }}
+                        .link:hover {{
+                            text-decoration: underline;
+                        }}
+                        p, figure {{
+                            font-size: 0.9rem;
                         }}
                         body {{
                             margin: 0;
@@ -48,55 +87,44 @@ public sealed class HomeController : ControllerBase
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            background-color: var(--secondary-white);                            
-                            color: var(--primary-black);
-                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                                                                                                                                            
-                        }}
-                        .card {{
-                            padding: 2rem 3rem;
-                            max-width: 500px;
-                            background-color: var(--primary-white);
-                            border-radius: 12px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                             text-align: center;
-                        }}
-                        .link {{
-                            color: var(--primary-black);
-                            text-decoration: none;
-                            font-size: 0.9rem;
-                        }}
-                        .link:hover {{
-                            text-decoration: underline;
+                            background-color: var(--secondary-white);
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            color: var(--font-color);
                         }}
                         h1 {{
-                            margin-bottom: 1rem;
+                            margin: 6px 0 0 0;
                             color: var(--primary-color);
-                        }}
-                        p {{
-                            margin: 0.5rem 0;
-                            color: var(--font-color);
-                            font-size: 1.1rem;
                         }}
                         strong {{
                             color: var(--secondary-color);
                         }}
+                        figure figcaption {{
+                            margin-bottom: 0.3rem;
+                        }}
                     </style>
                 </head>
                 <body>
-                    <div class=""card"">
-                        <h1>Status da StockExchange.WebAPI</h1>
-                        <p><strong>Fuso Horário:</strong> {timezone}</p>
-                        <p><strong>Data de Início:</strong> {now:yyyy-MM-dd HH:mm:ss}</p>
-                        <p><strong>Versão do .NET:</strong> {version}</p>
-                        <p><strong>Uptime:</strong> <span id=""uptime"">{uptimeFormatted}</span> (hh:mm:ss)</p>
+                    <div class=""card"">                        
+                        <h1>StockExchange.WebAPI</h1>
+                        <dl class=""grid"">
+                            <dt>Time Zone:</dt><dd>{timezone}</dd>
+                            <dt>Start Date:</dt><dd>{now:yyyy-MM-dd HH:mm:ss}</dd>
+                            <dt>.NET Version:</dt><dd>{version}</dd>
+                            <dt>Uptime:</dt><dd><span id=""uptime"">{uptimeFormatted}</span> (hh:mm:ss)</dd>
+                        </dl>
                         <p>
-                            <br />
                             <a class=""link"" target=""_blank"" href=""/swagger/index.html"">Go to <strong>Swagger</strong> to check out the StockExchange.WebAPI</a>
                             <br />
                             <a class=""link"" target=""_blank"" href=""https://github.com/rodrigocdellu/stockexchange.back-end"">For <strong>More Information</strong> to go my GitHub</a>
                         </p>
+                        <figure>
+                            <figcaption>Powered By</figcaption>
+                            <a class=""link"" target=""_blank"" href=""https://dotnet.microsoft.com/pt-br/download/dotnet/6.0""><img src=""/public/DotNet.png"" alt="".NET"" /></a>
+                            &nbsp;&nbsp;
+                            <a class=""link"" target=""_blank"" href=""https://learn.microsoft.com/pt-br/dotnet/csharp/whats-new/csharp-version-history""><img src=""/public/CSharp.png"" alt=""C#"" /></a>
+                        </figure>
                     </div>
-
                     <script>
                         // Function to calculate uptime dynamically
                         var startupTime = new Date('{this._ApplicationService.StartupTime:yyyy-MM-ddTHH:mm:ss}').getTime();
