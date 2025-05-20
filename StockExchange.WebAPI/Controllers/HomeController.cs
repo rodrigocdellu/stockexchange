@@ -52,6 +52,7 @@ public sealed class HomeController : ControllerBase
                             background-color: var(--primary-white);                                                        
                         }}
                         .grid {{
+                            margin-bottom: 20px;
                             padding: 0.9rem 0.9rem;
                             display: grid;
                             grid-template-columns: max-content max-content;
@@ -100,6 +101,9 @@ public sealed class HomeController : ControllerBase
                         }}
                         strong {{
                             color: var(--secondary-color);
+                        }}
+                        figure {{
+                            margin-top: 16px;
                         }}
                         figure figcaption {{
                             margin-bottom: 0.3rem;
