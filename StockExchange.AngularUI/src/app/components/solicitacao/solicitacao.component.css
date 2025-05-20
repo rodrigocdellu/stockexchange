@@ -1,14 +1,14 @@
 :root {
     --primary-white: #ffffff;          /* Mantém branco */
-    --secondary-white: #fce4ec;        /* Pink 50 – Rosa claríssimo */
-    --primary-color: #f71561;          /* Tom solicitado – Rosa vibrante personalizado */
-    --secondary-color: #ec407a;        /* Pink 400 – Rosa forte, levemente mais claro */
-    --primary-black: #880e4f;          /* Pink 900 – Rosa escuro profundo */
+    --secondary-white: #fcebea;        /* Pink 50 – Rosa claríssimo: #fce4ec */
+    --primary-color: #b71c1c;          /* Tom solicitado – Rosa vibrante personalizado: #f71561 */
+    --secondary-color: #c62828;        /* Pink 400 – Rosa forte, levemente mais claro: #ec407a */
+    --primary-black: #1a1a1a;          /* Pink 900 – Rosa escuro profundo: #880e4f */
     --font-color: #333333;             /* Cinza - Tom da fonte */
 }
 
 .card, .internalCard {
-    box-shadow: 0 4px 8px rgba(247, 21, 97, 0.1);
+    box-shadow: 0 4px 8px rgba(183, 28, 28, 0.1);
     border-radius: 12px;
 }
 
