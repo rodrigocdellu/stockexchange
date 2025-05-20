@@ -54,13 +54,15 @@ public sealed class HomeController : ControllerBase
                         .grid {{
                             padding: 0.9rem 0.9rem;
                             display: grid;
-                            grid-template-columns: max-content 1fr;
+                            grid-template-columns: max-content max-content;
                             row-gap: 0.5rem;
-                            column-gap: 0;
+                            column-gap: 0.5rem;
+                            justify-content: center;
                             border: 1px dashed var(--primary-color);
                         }}
                         .grid dt, .grid dd {{
-                            margin: 0 0.9rem;
+                            margin: 0;
+                            display: block;
                         }}
                         .grid dt {{
                             text-align: right;
@@ -69,7 +71,7 @@ public sealed class HomeController : ControllerBase
                         }}
                         .grid dd {{
                             text-align: left;
-                        }}                        
+                        }}
                         .link {{
                             text-decoration: none;
                             color: var(--font-color);
@@ -119,7 +121,7 @@ public sealed class HomeController : ControllerBase
                             <a class=""link"" target=""_blank"" href=""https://github.com/rodrigocdellu/stockexchange.back-end"">For <strong>More Information</strong> to go my GitHub</a>
                         </p>
                         <figure>
-                            <figcaption>Powered By</figcaption>
+                            <figcaption>Developed With</figcaption>
                             <a class=""link"" target=""_blank"" href=""https://dotnet.microsoft.com/pt-br/download/dotnet/6.0""><img src=""/public/DotNet.png"" alt="".NET"" /></a>
                             &nbsp;&nbsp;
                             <a class=""link"" target=""_blank"" href=""https://learn.microsoft.com/pt-br/dotnet/csharp/whats-new/csharp-version-history""><img src=""/public/CSharp.png"" alt=""C#"" /></a>

@@ -44,16 +44,19 @@
     </div>
     <div class="internalCard">
         <h2>Resultado do Investimento CDB</h2>
-        <span><strong>Retorno Bruto</strong> {{ this.retorno.resultadoBruto | currency }}</span>
-        <br />
-        <span><strong>Retorno Líquido</strong> {{ this.retorno.resultadoLiquido | currency }}</span>
+        <dl class="grid">
+            <dt>Retorno Bruto:</dt><dd>{{ this.retorno.resultadoBruto | currency }}</dd>
+            <dt>Retorno Líquido:</dt><dd>{{ this.retorno.resultadoLiquido | currency }}</dd>
+        </dl>
     </div>
     <p>
         <a class="link" target="_blank" href="https://github.com/rodrigocdellu/stockexchange.front-end">Para <strong>Maiores Informações</strong> veja meu GitHub</a>
     </p>
     <figure>
-        <figcaption>Fornecido Por</figcaption>
+        <figcaption>Desenvolvido Com</figcaption>
         <a class="link" target="_blank" href="https://angular.dev"><img src="Angular.png" alt="Angular" /></a>
+        &nbsp;&nbsp;
+        <a class="link" target="_blank" href="https://www.typescriptlang.org"><img src="TS.png" alt="TypeScript" /></a>
         &nbsp;&nbsp;
         <a class="link" target="_blank" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="JS.png" alt="JavaScrit" /></a>
         &nbsp;&nbsp;
