@@ -5,7 +5,6 @@
         <form [formGroup]="solicitacaoForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline">
                 <mat-label>Investimento</mat-label>
-
                 <input matInput formControlName="investimento"
                     mask="separator.2"
                     thousandSeparator="."
@@ -22,7 +21,6 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Meses</mat-label>
-
                 <input matInput type="number" formControlName="meses" (keydown)="blockDecimal($event)"
                     placeholder="Ex: 24" />
                 <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('required')">
@@ -46,11 +44,21 @@
     </div>
     <div class="internalCard">
         <h2>Resultado do Investimento CDB</h2>
-        <p><strong>Retorno Bruto</strong> {{ this.retorno.resultadoBruto | currency }}</p>
-        <p><strong>Retorno Líquido</strong> {{ this.retorno.resultadoLiquido | currency }}</p>
+        <span><strong>Retorno Bruto</strong> {{ this.retorno.resultadoBruto | currency }}</span>
+        <br />
+        <span><strong>Retorno Líquido</strong> {{ this.retorno.resultadoLiquido | currency }}</span>
     </div>
     <p>
-        <a class="link" target="_blank" href="https://github.com/rodrigocdellu/stockexchange.front-end">Para
-            <strong>Maiores Informações</strong> veja meu GitHub</a>
+        <a class="link" target="_blank" href="https://github.com/rodrigocdellu/stockexchange.front-end">Para <strong>Maiores Informações</strong> veja meu GitHub</a>
     </p>
+    <figure>
+        <figcaption>Fornecido Por</figcaption>
+        <a class="link" target="_blank" href="https://angular.dev"><img src="Angular.png" alt="Angular" /></a>
+        &nbsp;&nbsp;
+        <a class="link" target="_blank" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"><img src="JS.png" alt="JavaScrit" /></a>
+        &nbsp;&nbsp;
+        <a class="link" target="_blank" href="https://www.w3.org/html"><img src="HTML5.png" alt="HTML 5" /></a>
+        &nbsp;&nbsp;
+        <a class="link" target="_blank" href="https://www.w3.org/Style/CSS"><img src="CSS3.png" alt="CSS 3" /></a>
+    </figure>
 </div>

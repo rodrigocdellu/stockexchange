@@ -1,10 +1,48 @@
 :root {
     --primary-white: #ffffff;          /* Mantém branco */
     --secondary-white: #fce4ec;        /* Pink 50 – Rosa claríssimo */
-    --primary-color: #f71561;            /* Tom solicitado – Rosa vibrante personalizado */
-    --secondary-color: #ec407a;          /* Pink 400 – Rosa forte, levemente mais claro */
+    --primary-color: #f71561;          /* Tom solicitado – Rosa vibrante personalizado */
+    --secondary-color: #ec407a;        /* Pink 400 – Rosa forte, levemente mais claro */
     --primary-black: #880e4f;          /* Pink 900 – Rosa escuro profundo */
     --font-color: #333333;             /* Cinza - Tom da fonte */
+}
+
+.card, .internalCard {
+    box-shadow: 0 4px 8px rgba(247, 21, 97, 0.1);
+    border-radius: 12px;
+}
+
+.card {
+    padding: 2rem 3rem;
+    max-width: 500px;
+    background-color: var(--primary-white);
+}
+
+.internalCard {
+    margin-bottom: 48px;
+    padding-bottom: 29px;
+    border: 1px dashed var(--primary-color);
+}
+
+.link {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.buttonSpace {
+    margin-right: 40px;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+}
+
+p, figure {
+    font-size: 0.9rem;
 }
 
 body {
@@ -14,43 +52,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-white);
-    color: var(--primary-black);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.card {
-    padding: 2rem 3rem;
-    max-width: 500px;
-    background-color: var(--primary-white);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-.link {
-    color: var(--primary-black);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.link:hover {
-    text-decoration: underline;
+    background-color: var(--secondary-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--font-color);
 }
 
 h1 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-h2 {
-    color: var(--primary-color);
+    margin: 6px 0 1rem 0;
 }
 
 p {
     margin: 0.5rem 0;
-    color: var(--font-color);
-    font-size: 1.1rem;
 }
 
 strong {
@@ -61,15 +74,6 @@ button {
     margin-top: 40px;
 }
 
-.buttonSpace {
-    margin-right: 40px;
-}
-
-.internalCard {
-    margin-bottom: 48px;
-    padding-bottom: 29px;
-    border-style: dashed;
-    border-width: 1px;
-    border-radius: 12px;
-    color: var(--primary-color);
+figure figcaption {
+    margin-bottom: 0.3rem;
 }

@@ -43,7 +43,7 @@ public sealed class HomeController : ControllerBase
                             --font-color: #333333;             /* Cinza - Tom da fonte */
                         }}
                         .card, .grid {{
-                            box-shadow: 0 4px 8px rgba(49, 27, 83, 0.1);
+                            box-shadow: 0 4px 8px rgba(90, 44, 143, 0.1);
                             border-radius: 12px;
                         }}
                         .card {{
@@ -57,7 +57,7 @@ public sealed class HomeController : ControllerBase
                             grid-template-columns: max-content 1fr;
                             row-gap: 0.5rem;
                             column-gap: 0;
-                            border: 1px dotted var(--primary-black);
+                            border: 1px dashed var(--primary-color);
                         }}
                         .grid dt, .grid dd {{
                             margin: 0 0.9rem;
@@ -105,7 +105,7 @@ public sealed class HomeController : ControllerBase
                     </style>
                 </head>
                 <body>
-                    <div class=""card"">                        
+                    <div class=""card"">
                         <h1>StockExchange.WebAPI</h1>
                         <dl class=""grid"">
                             <dt>Time Zone:</dt><dd>{timezone}</dd>
