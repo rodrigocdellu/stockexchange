@@ -116,9 +116,9 @@ public sealed class HomeController : ControllerBase
                             <dt>Uptime:</dt><dd><span id=""uptime"">{uptimeFormatted}</span> (hh:mm:ss)</dd>
                         </dl>
                         <p>
-                            <a class=""link"" target=""_blank"" href=""/swagger/index.html"">Go to <strong>Swagger</strong> to check out the StockExchange.WebAPI</a>
+                            <a class=""link"" target=""_blank"" href=""/swagger/index.html"">Go to <strong>Swagger</strong> to check out the StockExchange.WebAPI.</a>
                             <br />
-                            <a class=""link"" target=""_blank"" href=""https://github.com/rodrigocdellu/stockexchange.back-end"">For <strong>More Information</strong> to go my GitHub</a>
+                            <a class=""link"" target=""_blank"" href=""https://github.com/rodrigocdellu/stockexchange.back-end"">For <strong>More Information</strong> to go my GitHub!</a>
                         </p>
                         <figure>
                             <figcaption>Developed With</figcaption>

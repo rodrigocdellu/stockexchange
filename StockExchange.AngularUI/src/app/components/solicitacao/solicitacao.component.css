@@ -19,7 +19,7 @@
 }
 
 .internalCard {
-    margin-bottom: 48px;
+    margin-bottom: 25px;
     padding-bottom: 29px;
     border: 1px dashed var(--primary-color);
 }
@@ -81,16 +81,16 @@ h1 {
     margin: 6px 0 1rem 0;
 }
 
-p {
-    margin: 0.5rem 0;
-}
-
 strong {
     color: var(--secondary-color);
 }
 
 button {
-    margin-top: 40px;
+    margin-top: 30px;
+}
+
+figure {
+    margin-top: 25px;
 }
 
 figure figcaption {
