@@ -4,7 +4,7 @@ import styles from './Solicitacao.module.css'
 export default function Solicitacao({ retorno }: Retorno) {
     return (
         <div className={styles.card}>
-            <h1>Bem-vindo(a) à Aplicação Angular CDB</h1>
+            <h1>Bem-vindo(a) à Aplicação React CDB</h1>
             <div className={styles.internalCard}>
                 <h2>Solicitar o Calculo do Investimento CDB</h2>
                 <h3>###FORMULÁRIO AQUI###</h3>
