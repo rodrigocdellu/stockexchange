@@ -6,7 +6,64 @@
     --primary-black: #004d40;          /* Cyan 900 – Azul-petróleo escuro para contraste */
     --font-color: #333333;             /* Cinza - Tom da fonte */
 }
-  
+
+.card, .internalCard {
+    box-shadow: 0 4px 8px rgba(183, 28, 28, 0.1);
+    border-radius: 12px;
+}
+
+.card {
+    padding: 2rem 3rem;
+    max-width: 500px;
+    background-color: var(--primary-white);
+}
+
+.internalCard {
+    margin-bottom: 25px;
+    padding-bottom: 29px;
+    border: 1px dashed var(--primary-color);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 130px max-content;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    justify-content: center;
+}
+
+.grid dt, .grid dd {
+    margin: 0;
+    display: block;
+    text-align: left;
+}
+
+.grid dt {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.link {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.buttonSpace {
+    margin-right: 40px;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+}
+
+p, figure {
+    font-size: 0.9rem;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -14,43 +71,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--secondary-white);
-    color: var(--primary-black);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.card {
-    padding: 2rem 3rem;
-    max-width: 500px;
-    background-color: var(--primary-white);
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-.link {
-    color: var(--primary-black);
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.link:hover {
-    text-decoration: underline;
+    background-color: var(--secondary-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--font-color);
 }
 
 h1 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-h2 {
-    color: var(--primary-color);
-}
-
-p {
-    margin: 0.5rem 0;
-    color: var(--font-color);
-    font-size: 1.1rem;
+    margin: 6px 0 1rem 0;
 }
 
 strong {
@@ -58,18 +86,13 @@ strong {
 }
 
 button {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
-.buttonSpace {
-    margin-right: 40px;
+figure {
+    margin-top: 25px;
 }
 
-.internalCard {
-    margin-bottom: 48px;
-    padding-bottom: 29px;
-    border-style: dashed;
-    border-width: 1px;
-    border-radius: 12px;
-    color: var(--primary-color);
+figure figcaption {
+    margin-bottom: 0.3rem;
 }
