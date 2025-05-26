@@ -52,8 +52,17 @@
     text-decoration: underline;
 }
 
-.buttonSpace {
-    margin-right: 40px;
+.textField {
+    width: 212px !important;
+}
+
+.buttonSpaceLeft, .buttonSpaceRight {
+    margin-top: 42px !important;
+}
+
+.buttonSpaceLeft {
+    margin-left: -23px !important;
+    margin-right: 40px !important;
 }
 
 h1, h2 {

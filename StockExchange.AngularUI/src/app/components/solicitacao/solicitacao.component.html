@@ -1,9 +1,9 @@
 <div class="card">
-    <h1>Bem-vindo(a) à Aplicação Angular CDB</h1>
+    <h1>Bem-vindo(a) à Aplicação<br />Angular CDB</h1>
     <div class="internalCard">
         <h2>Solicitar o Calculo do Investimento CDB</h2>
         <form [formGroup]="solicitacaoForm" (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="outline">
+            <mat-form-field class="textField" appearance="outline">
                 <mat-label>Investimento</mat-label>
                 <input matInput formControlName="investimento"
                     mask="separator.2"
@@ -18,8 +18,8 @@
                     O valor deve ser maior que R$ 0,01.
                 </mat-error>
             </mat-form-field>
-
-            <mat-form-field appearance="outline">
+            
+            <mat-form-field class="textField" appearance="outline">
                 <mat-label>Meses</mat-label>
                 <input matInput type="number" formControlName="meses" (keydown)="blockDecimal($event)"
                     placeholder="Ex: 24" />
@@ -37,9 +37,9 @@
                 </mat-error>
             </mat-form-field>
 
-            <button class="buttonSpace" mat-raised-button color="primary" type="submit">Solicitar</button>
+            <button class="buttonSpaceLeft" mat-stroked-button color="primary" type="submit">Solicitar</button>
 
-            <button mat-raised-button color="primary" (click)="clearFields()">Limpar</button>
+            <button class="buttonSpaceRight" mat-stroked-button color="primary" (click)="clearFields()">Limpar</button>
         </form>
     </div>
     <div class="internalCard">
