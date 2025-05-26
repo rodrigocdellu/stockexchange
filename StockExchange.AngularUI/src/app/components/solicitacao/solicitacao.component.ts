@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CdbserviceService } from '../../services/cdbservice.service';
-import { Retorno } from '../../models/retorno.model';
+import { CdbService } from '../../services/cdb.service';
+import { RetornoModel } from '../../models/retorno.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,10 +13,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SolicitacaoComponent {
     solicitacaoForm: FormGroup;
-    retorno: Retorno = {} as Retorno;
+    retorno: RetornoModel = {} as RetornoModel;
     validationMessage: string = "";
 
-    constructor(private readonly formBuilder: FormBuilder, private readonly cdbserviceService: CdbserviceService, private readonly snackBar: MatSnackBar) {
+    constructor(private readonly formBuilder: FormBuilder, private readonly cdbserviceService: CdbService, private readonly snackBar: MatSnackBar) {
         this.solicitacaoForm = this.formBuilder.group({
             investimento: ['', [Validators.required, Validators.min(0.01)]], // Only values greater than 0.01
             meses: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.min(2), Validators.max(1200)]] // Only positive integers between 2 and 1200
@@ -51,7 +51,7 @@ export class SolicitacaoComponent {
     
     private solicitarCalculoInvestimento(investimento: number, meses: number): void {
         this.cdbserviceService.solicitarCalculoInvestimento(investimento, meses).subscribe({
-            next: (res: Retorno) => {
+            next: (res: RetornoModel) => {
                 this.retorno = res;
     
                 this.snackBar.open('Investimento calculado com sucesso!', 'Fechar', {
@@ -86,7 +86,7 @@ export class SolicitacaoComponent {
         });
 
         // Clear retorno fields
-        this.retorno = {} as Retorno;
+        this.retorno = {} as RetornoModel;
     }
 
     onSubmit() {

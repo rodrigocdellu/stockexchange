@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CdbserviceService } from './cdbservice.service';
+import { CdbService } from './cdb.service';
 
 describe('CdbserviceService', () => {
-    let service: CdbserviceService;
+    let service: CdbService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
-        service = TestBed.inject(CdbserviceService);
+        service = TestBed.inject(CdbService);
     });
 
     it('should be created', () => {

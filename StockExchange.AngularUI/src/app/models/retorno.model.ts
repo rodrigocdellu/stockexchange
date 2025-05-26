@@ -1,4 +1,4 @@
-export interface Retorno {
+export interface RetornoModel {
     resultadoBruto: string;
     resultadoLiquido: string;
 }

@@ -3,12 +3,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'; // 2025/04/24 - To handle errors
 
-import { Retorno } from '../models/retorno.model';
+import { RetornoModel } from '../models/retorno.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CdbserviceService {
+export class CdbService {
     // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
     private readonly baseURL = "http://localhost";
     private readonly port = "5041" // change to 7200 to dockerize or 5041 to localhost
@@ -17,7 +17,7 @@ export class CdbserviceService {
     constructor(private readonly http: HttpClient) {
     }
 
-    solicitarCalculoInvestimento(investimento: number, meses: number): Observable<Retorno> {
+    solicitarCalculoInvestimento(investimento: number, meses: number): Observable<RetornoModel> {
         // Define the service action
         let action = "SolicitarCalculoInvestimento";
 
@@ -25,7 +25,7 @@ export class CdbserviceService {
         let url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
-        return this.http.get<Retorno>(url).pipe(
+        return this.http.get<RetornoModel>(url).pipe(
             catchError((error: HttpErrorResponse) => {
                 console.error("Erro na requisição:", error.message);
                 console.error("Status:", error.status);
