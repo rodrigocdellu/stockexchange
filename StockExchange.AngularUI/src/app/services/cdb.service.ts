@@ -19,10 +19,10 @@ export class CdbService {
 
     solicitarCalculoInvestimento(investimento: number, meses: number): Observable<RetornoModel> {
         // Define the service action
-        let action = "SolicitarCalculoInvestimento";
+        const action = "SolicitarCalculoInvestimento";
 
         // Set the service url
-        let url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
+        const url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
         return this.http.get<RetornoModel>(url).pipe(
