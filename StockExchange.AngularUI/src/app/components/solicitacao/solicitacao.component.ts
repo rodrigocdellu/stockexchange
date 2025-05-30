@@ -39,7 +39,17 @@ export class SolicitacaoComponent {
                 );
             
             // Valida o parâmetro meses
-            const meses = this.solicitacaoForm.value["meses"];
+            const mesesFormatado = this.solicitacaoForm.get('meses')?.value;
+    
+            const meses = typeof mesesFormatado === 'number'
+                ? mesesFormatado
+                : parseFloat(
+                    mesesFormatado
+                        .replace(/\./g, '')
+                        .replace('.', '')
+                        .replace(',', '')
+                        .trim()
+                );
 
             // Retorna os parametros válidos
             return { investimento, meses };
@@ -62,7 +72,7 @@ export class SolicitacaoComponent {
                 });
             },
             error: (err) => {
-                this.snackBar.open(err.message, 'Fechar', {
+                this.snackBar.open(err.message || 'Erro ao calcular investimento.', 'Fechar', {
                     duration: 5000,
                     panelClass: ['mat-warn'],
                     horizontalPosition: 'center',
@@ -81,15 +91,15 @@ export class SolicitacaoComponent {
     clearFields(): void {
         // Clear form fields
         this.solicitacaoForm.patchValue({
-            investimento: '',
-            meses: ''
+            investimento: 0,
+            meses: 0
         });
 
         // Clear retorno fields
         this.retornoModel = {} as RetornoModel;
     }
 
-    onSubmit() {
+    onSubmit(): void {
         // Valida os dados de entrada
         const dados = this.validaEstrutura();
 

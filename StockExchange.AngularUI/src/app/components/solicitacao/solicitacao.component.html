@@ -10,19 +10,21 @@
                     thousandSeparator="."
                     decimalMarker=","
                     prefix="R$ "
-                    placeholder="Ex: R$ 0,00" />
+                    placeholder="Ex: R$ 0,01" />
                 <mat-error *ngIf="solicitacaoForm.get('investimento')?.hasError('required')">
                     Campo monetário obrigatório.
                 </mat-error>
                 <mat-error *ngIf="solicitacaoForm.get('investimento')?.hasError('min')">
-                    O valor deve ser maior que R$ 0,01.
+                    O valor deve ser maior que R$ 0,00.
                 </mat-error>
             </mat-form-field>
             
             <mat-form-field class="textField" appearance="outline">
                 <mat-label>Meses</mat-label>
-                <input matInput type="number" formControlName="meses" (keydown)="blockDecimal($event)"
-                    placeholder="Ex: 24" />
+                <input matInput formControlName="meses"
+                    type="number"
+                    placeholder="Ex: 24"
+                    (keydown)="blockDecimal($event)" />
                 <mat-error *ngIf="solicitacaoForm.get('meses')?.hasError('required')">
                     Campo numérico obrigatório.
                 </mat-error>
