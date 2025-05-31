@@ -1,4 +1,4 @@
-name: SonarQubeFrontEnd
+name: SonarQubeReactUI
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   frontend:
-    name: Frontend - Angular - Analyze
+    name: Frontend - React - Analyze
     runs-on: ubuntu-latest
 
     steps:

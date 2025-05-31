@@ -5,7 +5,7 @@ import type { RetornoModel } from '../models/RetornoModel';
 export class CdbService {
     // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
     private readonly baseURL = 'http://localhost';
-    private readonly port = '5041'; // change to 7300 to dockerize or 5041 to localhost
+    private readonly port = '5041'; // change to 7200 to dockerize or 5041 to localhost
     private readonly controller = 'Cdb';
 
     async solicitarCalculoInvestimento(investimento: number, meses: number): Promise<{ data: RetornoModel }> {
