@@ -27,6 +27,27 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "StockExchange.AngularUI", "
 		SlnRelativePath = "StockExchange.AngularUI\"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "StockExchange.ReactUI", "StockExchange.ReactUI\", "{E10BDA27-4C64-B0F1-E53F-E36B0B817636}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50022"
+		Debug.AspNetCompiler.PhysicalPath = "StockExchange.ReactUI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50022\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50022"
+		Release.AspNetCompiler.PhysicalPath = "StockExchange.ReactUI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50022\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50022"
+		SlnRelativePath = "StockExchange.ReactUI\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +66,10 @@ Global
 		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{55BF60CE-37BE-C38C-869B-60B877B3F591}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E10BDA27-4C64-B0F1-E53F-E36B0B817636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10BDA27-4C64-B0F1-E53F-E36B0B817636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10BDA27-4C64-B0F1-E53F-E36B0B817636}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10BDA27-4C64-B0F1-E53F-E36B0B817636}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
