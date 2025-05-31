@@ -1,20 +1,110 @@
-import type { Retorno } from '../../models/Retorno'
-import styles from './Solicitacao.module.css'
-import { useForm } from 'react-hook-form'
-import { TextField, Button } from '@mui/material';
+import { useState } from 'react';
+import { CdbService } from '../../services/CdbService';
+import { type Retorno } from '../../models/Retorno';
+import styles from './Solicitacao.module.css';
+import { NumericFormat, type NumberFormatValues } from 'react-number-format';
+import { useForm, Controller } from 'react-hook-form';
+import { TextField, Button, Snackbar, Alert } from '@mui/material';
 
-export default function Solicitacao({ retorno }: Retorno) {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+export default function Solicitacao() {
+    const [retorno, setRetorno] = useState<Retorno>();
+    const [snack, setSnack] = useState({ open: false, message: '', severity: 'success' });
+    const { control, register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
 
     type FormData = {
-        investimento: number;
-        meses: number;
+        investimento: number,
+        meses: number
+    };
+    
+    function validaEstrutura(formData: FormData): { investimento: number, meses: number } | null {
+        // Valida o parâmetro investimento
+        const investimentoFormatado = String(formData.investimento);
+
+        const investimento = typeof investimentoFormatado === 'number'
+            ? investimentoFormatado
+            : parseFloat(
+                investimentoFormatado
+                    .replace('R$', '')
+                    .replace(/\./g, '')
+                    .replace(',', '.')
+                    .trim()
+            );
+        
+        // Valida o parâmetro meses
+        const mesesFormatado = String(formData.meses);
+
+        const meses = typeof mesesFormatado === 'number'
+            ? mesesFormatado
+            : parseFloat(
+                mesesFormatado
+                    .replace(/\./g, '')
+                    .replace('.', '')
+                    .replace(',', '')
+                    .trim()
+            );
+
+        // Retorna os parametros válidos
+        return { investimento, meses };
+    }
+
+    function solicitarCalculoInvestimento(investimento: number, meses: number): void {
+        new CdbService().solicitarCalculoInvestimento(investimento, meses)
+            .then((res) => {
+                setRetorno(res.data);
+                
+                setSnack({
+                    open: true,
+                    message: 'Investimento calculado com sucesso!',
+                    severity: 'success'
+                });
+            })
+            .catch((err) => {
+                setSnack({
+                    open: true,
+                    message: err.message || 'Erro ao calcular investimento.',
+                    severity: 'error'
+                });
+            });
+    }
+
+    function currencyChange(onChangeFn: (value: number | undefined) => void) {
+        return function (values: NumberFormatValues): void {
+            onChangeFn(values.floatValue);
+        };
+    }
+
+    function blockDecimal(event: React.KeyboardEvent<HTMLInputElement>): void {
+        if (event.key === '.' || event.key === ',') {
+            event.preventDefault();
+        }
+    }
+
+    function clearFields(): void {
+        // Clear form fields
+        reset({
+            investimento: 0,
+            meses: 0
+        });
+    }
+
+    function onCloseSnack(): void {
+        // Close the snack
+        setSnack({
+            ...snack,
+            open: false
+        });
     };
 
-    const onSubmit = (data: FormData) => {
-        console.log(data);
-        // fazer chamada para API etc.
-    };
+    function onSubmit(formData: FormData): void {
+        // Valida os dados de entrada
+        const dados = validaEstrutura(formData);
+
+        // Se válidos
+        if (dados) {
+            // Realiza a requisição
+            solicitarCalculoInvestimento(dados.investimento, dados.meses);
+        }   
+    }
 
     return (
         <div className={styles.card}>
@@ -22,16 +112,31 @@ export default function Solicitacao({ retorno }: Retorno) {
             <div className={styles.internalCard}>
                 <h2>Solicitar o Calculo do Investimento CDB</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <TextField
-                        label="Investimento*"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        {...register("investimento", { required: "Campo obrigatório" })}
-                        error={!!errors.investimento}
-                        helperText={errors.investimento?.message}
-                        className={styles.textField}
-                    />
+                    <Controller
+                        name="investimento"
+                        control={control}
+                        rules={{
+                            required: "Campo monetário obrigatório.",
+                            min: { value: 0.01, message: "O valor deve ser maior que R$ 0,00." }
+                        }}
+                        render={({ field }) => (
+                            <NumericFormat
+                                label="Investimento*"
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                className={styles.textField}
+                                error={!!errors.investimento}
+                                helperText={errors.investimento?.message}
+                                decimalScale={2}
+                                thousandSeparator="."
+                                decimalSeparator=","
+                                prefix="R$ "
+                                placeholder="Ex: R$ 0,01"
+                                value={field.value ?? ''}
+                                customInput={TextField}
+                                onValueChange={currencyChange(field.onChange)} />
+                        )} />
 
                     <TextField
                         label="Meses*"
@@ -39,26 +144,39 @@ export default function Solicitacao({ retorno }: Retorno) {
                         type="number"
                         fullWidth
                         margin="normal"
-                        {...register("meses", {
-                        required: "Campo obrigatório",
-                        min: { value: 1, message: "Mínimo de 1 mês" },
-                        max: { value: 1200, message: "Máximo de 1200 meses" }
-                        })}
+                        className={styles.textField}
                         error={!!errors.meses}
                         helperText={errors.meses?.message}
-                        className={styles.textField}
-                    />
+                        placeholder="Ex: 24"
+                        onKeyDown={blockDecimal}
+                        {...register("meses", {
+                            required: "Campo numérico obrigatório.",
+                            min: {value: 2, message: "O valor deve ser maior que 1."},
+                            max: {value: 1200, message: "O valor deve ser menor que 1201."}
+                        })} />
                     
                     <Button className={styles.buttonSpaceLeft} variant="outlined" color="primary" type="submit">Solicitar</Button>
                     
-                    <Button className={styles.buttonSpaceRight} variant="outlined" color="primary" onClick={() => reset()}>Limpar</Button>
+                    <Button className={styles.buttonSpaceRight} variant="outlined" color="primary" onClick={clearFields}>Limpar</Button>
                 </form>
+                <Snackbar
+                    open={snack.open}
+                    autoHideDuration={snack.severity === 'success' ? 3000 : 5000}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    onClose={onCloseSnack}>
+                    <Alert
+                        severity={snack.severity as any}
+                        sx={{ width: '100%' }}
+                        onClose={onCloseSnack}>
+                        {snack.message}
+                    </Alert>
+                </Snackbar>
             </div>
             <div className={styles.internalCard}>
                 <h2>Resultado do Investimento CDB</h2>
                 <dl className={styles.grid}>
-                    <dt>Retorno Bruto:</dt><dd>{ retorno.resultadoBruto }</dd>
-                    <dt>Retorno Líquido:</dt><dd>{ retorno.resultadoLiquido }</dd>
+                    <dt>Retorno Bruto:</dt><dd>{retorno?.resultadoBruto}</dd>
+                    <dt>Retorno Líquido:</dt><dd>{retorno?.resultadoLiquido}</dd>
                 </dl>
             </div>
             <p>

@@ -1,6 +1,4 @@
 export interface Retorno {
-    retorno: {
-        resultadoBruto: string;
-        resultadoLiquido: string;
-    }
+    resultadoBruto: string;
+    resultadoLiquido: string;
 }
