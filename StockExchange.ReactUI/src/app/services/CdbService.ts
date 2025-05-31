@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import type { Retorno } from '../models/Retorno';
+import type { RetornoModel } from '../models/RetornoModel';
 
 export class CdbService {
     // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
@@ -8,7 +8,7 @@ export class CdbService {
     private readonly port = '5041'; // change to 7300 to dockerize or 5041 to localhost
     private readonly controller = 'Cdb';
 
-    async solicitarCalculoInvestimento(investimento: number, meses: number): Promise<{ data: Retorno }> {
+    async solicitarCalculoInvestimento(investimento: number, meses: number): Promise<{ data: RetornoModel }> {
         // Define the service action
         const action = 'SolicitarCalculoInvestimento';
 
@@ -16,7 +16,7 @@ export class CdbService {
         const url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
-        return await axios.get<Retorno>(url)
+        return await axios.get<RetornoModel>(url)
             .catch((error) => {
                 console.error('Erro na requisição:', error.message);
                 console.error('Status:', error.response?.status);

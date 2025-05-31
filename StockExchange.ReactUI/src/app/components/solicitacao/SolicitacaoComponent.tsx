@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { CdbService } from '../../services/CdbService';
-import { type Retorno } from '../../models/Retorno';
+import { type RetornoModel } from '../../models/RetornoModel';
 import styles from './Solicitacao.module.css';
 import { NumericFormat, type NumberFormatValues } from 'react-number-format';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Snackbar, Alert } from '@mui/material';
 
-export default function Solicitacao() {
-    const [retorno, setRetorno] = useState<Retorno>();
+export default function SolicitacaoComponent() {
+    const [retornoModel, setRetornoModel] = useState<RetornoModel>();
     const [snack, setSnack] = useState({ open: false, message: '', severity: 'success' });
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm<FormData>();
 
@@ -50,7 +50,7 @@ export default function Solicitacao() {
     function solicitarCalculoInvestimento(investimento: number, meses: number): void {
         new CdbService().solicitarCalculoInvestimento(investimento, meses)
             .then((res) => {
-                setRetorno(res.data);
+                setRetornoModel(res.data);
                 
                 setSnack({
                     open: true,
@@ -175,8 +175,8 @@ export default function Solicitacao() {
             <div className={styles.internalCard}>
                 <h2>Resultado do Investimento CDB</h2>
                 <dl className={styles.grid}>
-                    <dt>Retorno Bruto:</dt><dd>{retorno?.resultadoBruto}</dd>
-                    <dt>Retorno Líquido:</dt><dd>{retorno?.resultadoLiquido}</dd>
+                    <dt>Retorno Bruto:</dt><dd>{retornoModel?.resultadoBruto}</dd>
+                    <dt>Retorno Líquido:</dt><dd>{retornoModel?.resultadoLiquido}</dd>
                 </dl>
             </div>
             <p>
