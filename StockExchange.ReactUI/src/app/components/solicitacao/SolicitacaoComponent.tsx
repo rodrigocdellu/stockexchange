@@ -67,10 +67,16 @@ export default function SolicitacaoComponent() {
             });
     }
 
-    function currencyChange(onChangeFn: (value: number | undefined) => void) {
-        return function (values: NumberFormatValues): void {
-            onChangeFn(values.floatValue);
-        };
+    function currency(value: string | undefined): string {
+        const number = Number(value);
+        
+        if (isNaN(number))
+            return 'R$ 0,00'; // fallback seguro
+
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        }).format(number);
     }
 
     function blockDecimal(event: React.KeyboardEvent<HTMLInputElement>): void {
@@ -85,6 +91,12 @@ export default function SolicitacaoComponent() {
             investimento: 0,
             meses: 0
         });
+    }
+
+    function onValueChange(onChangeFunction: (value: number | undefined) => void) {
+        return function (values: NumberFormatValues): void {
+            onChangeFunction(values.floatValue);
+        };
     }
 
     function onCloseSnack(): void {
@@ -135,7 +147,7 @@ export default function SolicitacaoComponent() {
                                 placeholder="Ex: R$ 0,01"
                                 value={field.value ?? ''}
                                 customInput={TextField}
-                                onValueChange={currencyChange(field.onChange)} />
+                                onValueChange={onValueChange(field.onChange)} />
                         )} />
 
                     <TextField
@@ -175,8 +187,8 @@ export default function SolicitacaoComponent() {
             <div className={styles.internalCard}>
                 <h2>Resultado do Investimento CDB</h2>
                 <dl className={styles.grid}>
-                    <dt>Retorno Bruto:</dt><dd>{retornoModel?.resultadoBruto}</dd>
-                    <dt>Retorno Líquido:</dt><dd>{retornoModel?.resultadoLiquido}</dd>
+                    <dt>Retorno Bruto:</dt><dd>{currency(retornoModel?.resultadoBruto)}</dd>
+                    <dt>Retorno Líquido:</dt><dd>{currency(retornoModel?.resultadoLiquido)}</dd>
                 </dl>
             </div>
             <p>
