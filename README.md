@@ -88,7 +88,7 @@ cd stockexchange/StockExchange.WebAPI/; dotnet run
 Certifique-se de que todas as ferramentas e pacotes utilizados estejam instaladas e funcionando.
 Antes de executar, verifique se as portas 4200, 5173 e 5041 estão disponíveis.
 Os comandos a seguir podem ser executados no **PowerShell (Windows)** ou no **Terminal (Linux)**.
-Se quiser, mude o parametro 'porta' de 5041 para 7200 do arquivo [`cdb.service.ts`](./stockexchange/StockExchange.AngularUI/src/app/services/cdbservice.service.ts) do Front-end Angular ou do arquivo [CdbService.ts](./stockexchange/StockExchange.ReactUI/src/app/services/CdbService.ts) do Front-end React. Isso alinha a porta do serviço a ser consumido.
+Se quiser, mude o parametro 'porta' de 5041 para 7200 do arquivo [`cdb.service.ts`](./StockExchange.AngularUI/src/app/services/cdb.service.ts) do Front-end Angular ou do arquivo [`CdbService.ts`](./StockExchange.ReactUI/src/app/services/CdbService.ts) do Front-end React. Isso alinha a porta do serviço a ser consumido.
 
 1. Com os repositório já baixados, execute o seguinte comando para desenvolver o Front-end Angular:
 
