@@ -1,10 +1,10 @@
 :root {
-    --primary-white: #ffffff;          /* Mantém branco */
-    --secondary-white: #e0f7fa;        /* Cyan 50 – Azul-ciano bem claro */
-    --primary-color: #5cd0ea;          /* Cor solicitada – Azul/ciano vibrante */
-    --secondary-color: #26c6da;        /* Cyan 400 – Tom complementar para destaques */
-    --primary-black: #004d40;          /* Cyan 900 – Azul-petróleo escuro para contraste */
-    --font-color: #333333;             /* Cinza - Tom da fonte */
+    --primary-white: #ffffff;
+    --secondary-white: #e0f7fa;
+    --primary-color: #5cd0ea;
+    --secondary-color: #26c6da;
+    --primary-black: #004d40;
+    --font-color: #333333;
 }
 
 .card, .internalCard {
