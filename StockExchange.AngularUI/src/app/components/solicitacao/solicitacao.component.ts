@@ -72,7 +72,7 @@ export class SolicitacaoComponent {
                 });
             },
             error: (err) => {
-                this.snackBar.open(err.message || 'Erro ao calcular investimento.', 'Fechar', {
+                this.snackBar.open(err.message ?? 'Erro ao calcular investimento.', 'Fechar', {
                     duration: 5000,
                     panelClass: ['mat-warn'],
                     horizontalPosition: 'center',

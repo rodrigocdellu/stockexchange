@@ -61,7 +61,7 @@ export default function SolicitacaoComponent() {
             .catch((err) => {
                 setSnack({
                     open: true,
-                    message: err.message || 'Erro ao calcular investimento.',
+                    message: err.message ?? 'Erro ao calcular investimento.',
                     severity: 'error'
                 });
             });
