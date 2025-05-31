@@ -91,6 +91,9 @@ export default function SolicitacaoComponent() {
             investimento: 0,
             meses: 0
         });
+
+        // Clear retorno fields
+        setRetornoModel({resultadoBruto:'0', resultadoLiquido:'0'} as RetornoModel);
     }
 
     function onValueChange(onChangeFunction: (value: number | undefined) => void) {
@@ -133,7 +136,7 @@ export default function SolicitacaoComponent() {
                         }}
                         render={({ field }) => (
                             <NumericFormat
-                                label="Investimento*"
+                                label="Investimento *"
                                 variant="outlined"
                                 fullWidth
                                 margin="normal"
@@ -151,7 +154,7 @@ export default function SolicitacaoComponent() {
                         )} />
 
                     <TextField
-                        label="Meses*"
+                        label="Meses *"
                         variant="outlined"
                         type="number"
                         fullWidth

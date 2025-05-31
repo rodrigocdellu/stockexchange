@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SolicitacaoComponent {
     solicitacaoForm: FormGroup;
-    retornoModel: RetornoModel = {} as RetornoModel;
+    retornoModel: RetornoModel = {resultadoBruto:'0', resultadoLiquido:'0'} as RetornoModel;
     validationMessage: string = "";
 
     constructor(private readonly formBuilder: FormBuilder, private readonly cdbService: CdbService, private readonly snackBar: MatSnackBar) {
@@ -90,13 +90,13 @@ export class SolicitacaoComponent {
 
     clearFields(): void {
         // Clear form fields
-        this.solicitacaoForm.patchValue({
+        this.solicitacaoForm.reset({
             investimento: 0,
             meses: 0
         });
 
         // Clear retorno fields
-        this.retornoModel = {} as RetornoModel;
+        this.retornoModel = {resultadoBruto:'0', resultadoLiquido:'0'} as RetornoModel;
     }
 
     onSubmit(): void {
