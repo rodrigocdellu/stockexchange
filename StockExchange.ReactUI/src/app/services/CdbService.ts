@@ -4,8 +4,7 @@ import type { RetornoModel } from '../models/RetornoModel';
 
 export class CdbService {
     // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
-    private readonly baseURL = 'http://localhost';
-    private readonly port = '5041'; // change to 7200 to dockerize or 5041 to localhost
+    private readonly baseURL = import.meta.env.VITE_WEBAPI_URL ?? 'http://localhost:5041';
     private readonly controller = 'Cdb';
 
     async solicitarCalculoInvestimento(investimento: number, meses: number): Promise<{ data: RetornoModel }> {
@@ -13,7 +12,7 @@ export class CdbService {
         const action = 'SolicitarCalculoInvestimento';
 
         // Set the service url
-        const url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
+        const url = `${this.baseURL}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
         return await axios.get<RetornoModel>(url)

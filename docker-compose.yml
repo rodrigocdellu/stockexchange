@@ -1,0 +1,50 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+services:
+  stockexchange.angularui:
+    image: stockexchange.angularui
+    container_name: stockexchange.angularui
+    depends_on:
+      - stockexchange.webapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile.angularui
+    environment:
+      NODE_ENV: production
+    ports:
+      - 7000:80
+      #- 443:443
+    networks:
+      - stockexchange
+
+  stockexchange.reactui:
+    image: stockexchange.reactui
+    container_name: stockexchange.reactui
+    depends_on:
+      - stockexchange.webapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile.reactui
+    environment:
+      NODE_ENV: production
+    ports:
+      - 7100:80
+      #- 443:443
+    networks:
+      - stockexchange
+
+  stockexchange.webapi:
+    image: stockexchange.webapi
+    container_name: stockexchange.webapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile.webapi
+    ports:
+      - 7200:80
+      #- 443:443
+    networks:
+      - stockexchange
+
+networks:
+  stockexchange:
+    driver: bridge

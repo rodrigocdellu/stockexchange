@@ -21,4 +21,5 @@ RUN dotnet publish "StockExchange.WebAPI.csproj" -c "$configuration" -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY StockExchange.WebAPI/Public /app/Public
 ENTRYPOINT ["dotnet", "StockExchange.WebAPI.dll"]
