@@ -53,11 +53,12 @@
 }
 
 .textField {
+    margin-top: 17px !important;
     width: 212px !important;
 }
 
 .buttonSpaceLeft, .buttonSpaceRight {
-    margin-top: 40px !important;
+    margin-top: 30px !important;
 }
 
 .buttonSpaceLeft {
