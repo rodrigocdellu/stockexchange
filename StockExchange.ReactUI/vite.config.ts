@@ -4,7 +4,7 @@ import * as Path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-    envDir: __dirname,
+    envDir:  Path.join(__dirname, "src/environments"),
     publicDir: Path.join(__dirname, "public"),
     root: Path.join(__dirname, "src"),
     build: {
@@ -21,5 +21,5 @@ export default defineConfig({
             "@": Path.resolve(__dirname, "./src"),
         },
     },
-    //plugins: [react()], // 2025/05/14 - It started with just this line
-})
+    //plugins: [react()], // 2025/05/14 - The original Vite project started with just this line
+});

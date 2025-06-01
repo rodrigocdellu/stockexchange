@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment'; // 2025/05/31 - To parameterize for Docker Compose
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -10,8 +11,7 @@ import { RetornoModel } from '../models/retorno.model';
 })
 export class CdbService {
     // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
-    private readonly baseURL = "http://localhost";
-    private readonly port = "5041" // change to 7200 to dockerize or 5041 to localhost
+    private readonly baseURL = environment.ANGULAR_WEBAPI_URL ?? 'http://localhost:5041';
     private readonly controller = "Cdb";
 
     constructor(private readonly http: HttpClient) {
@@ -22,7 +22,7 @@ export class CdbService {
         const action = "SolicitarCalculoInvestimento";
 
         // Set the service url
-        const url = `${this.baseURL}:${this.port}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
+        const url = `${this.baseURL}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
 
         // Do the request
         return this.http.get<RetornoModel>(url).pipe(
