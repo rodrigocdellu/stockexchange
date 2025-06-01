@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment'; // 2025/05/31 - To parameterize for Docker Compose
+import { environment } from '../../environments/environment.production'; // 2025/05/31 - To parameterize for Docker Compose
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
