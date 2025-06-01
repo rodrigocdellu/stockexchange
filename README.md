@@ -168,6 +168,12 @@ docker run --name stockexchange.reactui -d -p 7100:80 rodrigocdellu/stockexchang
 docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange.webapi:1.0;
 ```
 
+10. **Opcional**: Você também pode subir o ambiente de produção via Docker-Compose. Para isso execute o comando abaixo na pasta raiz do projeto (stockexchange):
+
+```
+docker-compose up
+```
+
 ## 🤍 Clean Code
 
 Aqui disponibilizo os [resultados da analise estática de cógido](https://sonarcloud.io/project/overview?id=rodrigocdellu_stockexchange) com as configurações padrão do SonarQube Cloud.
