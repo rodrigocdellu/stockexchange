@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CdbService } from '../../services/CdbService';
 import { type RetornoModel } from '../../models/RetornoModel';
-import styles from './Solicitacao.module.css';
+import styles from './SolicitacaoComponent.module.css';
 import { NumericFormat, type NumberFormatValues } from 'react-number-format';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Snackbar, Alert } from '@mui/material';
