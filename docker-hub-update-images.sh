@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Building Docker images via docker-compose..."
-docker-compose build --no-cache
+docker compose build --no-cache
 
 echo "Tagging Docker images..."
 docker tag stockexchange.angularui:latest rodrigocdellu/stockexchange.angularui:1.0.0
