@@ -171,7 +171,7 @@ docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange
 10. **Opcional**: Você também pode subir o ambiente de produção via Docker-Compose. Para isso execute o comando abaixo na pasta raiz do projeto (stockexchange):
 
 ```
-docker-compose up
+docker compose up
 ```
 
 ## 🤍 Clean Code
