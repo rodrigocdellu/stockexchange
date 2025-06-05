@@ -163,9 +163,9 @@ docker run --name stockexchange.webapi -d -p 7200:80 stockexchange.webapi
 9. **Opcional**: Após baixadas as imagens do meu Docker Hub, é só executar os seguintes comnandos:
 
 ```
-docker run --name stockexchange.angularui -d -p 7000:80 rodrigocdellu/stockexchange.angularui:1.0;
-docker run --name stockexchange.reactui -d -p 7100:80 rodrigocdellu/stockexchange.reactui:1.0;
-docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange.webapi:1.0;
+docker run --name stockexchange.angularui -d -p 7000:80 rodrigocdellu/stockexchange.angularui:1.0.0;
+docker run --name stockexchange.reactui -d -p 7100:80 rodrigocdellu/stockexchange.reactui:1.0.0;
+docker run --name stockexchange.webapi -d -p 7200:80 rodrigocdellu/stockexchange.webapi:1.0.0;
 ```
 
 10. **Opcional**: Você também pode subir o ambiente de produção via Docker-Compose. Para isso execute o comando abaixo na pasta raiz do projeto (stockexchange):
