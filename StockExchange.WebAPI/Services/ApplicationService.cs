@@ -1,5 +1,5 @@
-using System.Runtime.InteropServices;
 using StockExchange.WebAPI.Helpers;
+using System.Runtime.InteropServices;
 
 namespace StockExchange.WebAPI.Services;
 

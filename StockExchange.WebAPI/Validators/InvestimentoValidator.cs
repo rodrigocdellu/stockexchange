@@ -1,7 +1,7 @@
-using System.Globalization;
-using System.Text.RegularExpressions;
 using FluentValidation;
 using StockExchange.WebAPI.DTOs;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace StockExchange.WebAPI.Validators;
 

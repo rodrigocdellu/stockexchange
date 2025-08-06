@@ -1,8 +1,8 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 using StockExchange.WebAPI.Validators;
+using System.Net;
 
 namespace StockExchange.WebAPI.Controllers;
 

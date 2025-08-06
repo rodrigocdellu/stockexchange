@@ -1,8 +1,8 @@
-using System.Text;
 using FluentValidation;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Helpers;
 using StockExchange.WebAPI.Validators;
+using System.Text;
 
 namespace StockExchange.WebAPI.Services;
 
@@ -16,7 +16,13 @@ public class CdbService : ICdbService
     {
         this._InvestimentoValidator = new InvestimentoValidator();
         this.Retorno = new RetornoDto();
-    }    
+    }
+
+    public CdbService(IValidator<InvestimentoDto> investimentoValidator)
+    {
+        this._InvestimentoValidator = investimentoValidator;
+        this.Retorno = new RetornoDto();
+    }
 
     private static decimal ObterAliquotaImposto(uint prazoMeses)
     {

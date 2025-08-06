@@ -1,10 +1,10 @@
-using Microsoft.OpenApi.Models; // 2025/04/20 - Required for Dependency Injection (IoC)
 using FluentValidation; // 2025/04/30 - Required for Fluent Validation
 using FluentValidation.AspNetCore; // 2025/04/30 - Required for Fluent Validation
-using StockExchange.WebAPI.Validators;
+using Microsoft.Extensions.FileProviders; // 2025/05/15 - Enable static files in the Public folder
+using Microsoft.OpenApi.Models; // 2025/04/20 - Required for Dependency Injection (IoC)
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
-using Microsoft.Extensions.FileProviders; // 2025/05/15 - Enable static files in the Public folder
+using StockExchange.WebAPI.Validators;
 
 const string POLICYFORCORS = "StockExchangePolicy"; // 2025/04/20 - Define the policy name
 const string TERMSOFSERVICEURI = "https://github.com/rodrigocdellu"; // 2025/04/23 - SonarQube - Refactor your code not to use hardcoded absolute paths or URIs
