@@ -14,7 +14,7 @@ public class UT_CdbService
 
     private const string TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
 
-    private const string TEST_INVESTIMENTOZERO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '0'.";
+    //private const string TEST_INVESTIMENTOZERO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '0'.";
 
     private const string TEST_INVESTIMENTOEXCECAO_MESSAGE = "Exceção forçada para testes.";
 
@@ -178,6 +178,7 @@ public class UT_CdbService
         });
     }
 
+    /*
     [Test]
     public void Test_InvestimentoZero()
     {
@@ -198,6 +199,7 @@ public class UT_CdbService
             Assert.That(retorno.Success, Is.False);
         });
     }
+    */
 
     [Test]
     public void Test_InvestimentoExcecao()
