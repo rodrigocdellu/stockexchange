@@ -9,11 +9,11 @@ public class InvestimentoValidator : AbstractValidator<InvestimentoDto>
 {
     private const string REGEX = @"^[+-]?\d+([.,]\d+)?$"; // Regex para decimal com ponto ou vírgula
 
-    public const decimal VALOR_GREATERTHAN = 0.00m;
+    public const decimal VALOR_GREATERTHAN = 0m;
 
-    public const uint MESES_INCLUSIVEBETWEEN_MINIMUM = 2U;
+    public const uint MESES_INCLUSIVEBETWEEN_MINIMUM = 2u;
 
-    public const uint MESES_INCLUSIVEBETWEEN_MAXIMUM = 1200U;
+    public const uint MESES_INCLUSIVEBETWEEN_MAXIMUM = 1200u;
 
     #region Mensagens de Validação para Valor
 
