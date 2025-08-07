@@ -42,7 +42,8 @@ Este repositório possui 4 aplicações, sendo:
 - Framework: [.NET v6.0.36 (LTS)](https://dotnet.microsoft.com/pt-br/download/dotnet/6.0) com suporte ao [.NET v8.0.408 (LTS)](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)  
 - Framework de Validação: [FluentValidation.AspNetCore v11.3.0](https://www.nuget.org/packages/fluentvalidation.aspnetcore/11.3.0)
 - Framework de Teste da Microsoft: [Microsoft.NET.Test.Sdk v17.8.0](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk/17.8.0)
-- Framework de Teste: [NUnit v3.14.0](https://www.nuget.org/packages/NUnit/3.14.0)  
+- Framework de Teste: [NUnit v3.14.0](https://www.nuget.org/packages/NUnit/3.14.0)
+- Framework de Teste Mock: [Moq v4.20.72](https://www.nuget.org/packages/Moq/4.20.72)  
 - Ferramenta para Coletar Code Coverage: [coverlet.collector v6.0.4](https://www.nuget.org/packages/coverlet.collector/6.0.4)
 
 ## 🚀 Ambientes de Execução
