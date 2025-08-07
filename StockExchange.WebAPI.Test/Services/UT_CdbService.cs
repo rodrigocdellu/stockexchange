@@ -14,8 +14,6 @@ public class UT_CdbService
 
     private const string TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
 
-    //private const string TEST_INVESTIMENTOZERO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '0'.";
-
     private const string TEST_INVESTIMENTOEXCECAO_MESSAGE = "Exceção forçada para testes.";
 
     private List<RetornoContainerHelper>? Samples { get; set; }
@@ -177,29 +175,6 @@ public class UT_CdbService
             Assert.That(retorno.Success, Is.False);
         });
     }
-
-    /*
-    [Test]
-    public void Test_InvestimentoZero()
-    {
-        // Load data
-        var investimento = new InvestimentoDto() { Valor = 0m, Meses = 2u };
-
-        // Create the service
-        var service = new CdbService();
-
-        // Call the service
-        var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
-
-        // Do the tests
-        Assert.Multiple(() =>
-        {
-            Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTOZERO_MESSAGE.Concat(Environment.NewLine)));
-            Assert.That(retorno.Success, Is.False);
-        });
-    }
-    */
 
     [Test]
     public void Test_InvestimentoExcecao()
