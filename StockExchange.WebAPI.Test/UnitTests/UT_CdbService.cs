@@ -4,7 +4,7 @@ using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 using StockExchange.WebAPI.Test.Helpers;
 
-namespace StockExchange.WebAPI.Test.Services;
+namespace StockExchange.WebAPI.Test.UnitTests;
 
 public class UT_CdbService
 {

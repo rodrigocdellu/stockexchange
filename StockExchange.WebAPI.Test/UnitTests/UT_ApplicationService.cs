@@ -1,7 +1,7 @@
-﻿using StockExchange.WebAPI.Services;
-using StockExchange.WebAPI.Test.Helpers;
+﻿using StockExchange.WebAPI.Helpers;
+using StockExchange.WebAPI.Services;
 
-namespace StockExchange.WebAPI.Test.Services;
+namespace StockExchange.WebAPI.Test.UnitTests;
 
 public class UT_ApplicationService
 {
@@ -18,7 +18,7 @@ public class UT_ApplicationService
     public void Test_FusoHorario()
     {
         // Load data
-        var brasilianTimeZone = TestHelper.GetBrasilianTimeZone();
+        var brasilianTimeZone = DateTimeHelper.GetBrasilianTimeZone(new SystemTimeZoneProvider());
 
         // Do the initial tests
         Assert.Multiple(() =>
@@ -27,15 +27,15 @@ public class UT_ApplicationService
             Assert.That(this._ApplicationService, Is.Not.Null);
         });
         
-        // Call the service
-        var retorno = this._ApplicationService.TimeZone;
+        // Act
+        var result = this._ApplicationService.TimeZone;
 
         // Do the tests
         Assert.Multiple(() =>
         {
-            Assert.That(retorno, Is.Not.Null);
-            Assert.That(retorno, Is.Not.Empty);
-            Assert.That(retorno, Is.EqualTo(brasilianTimeZone.DisplayName));
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.Not.Empty);
+            Assert.That(result, Is.EqualTo(brasilianTimeZone.DisplayName));
         });
     }
 
@@ -45,15 +45,15 @@ public class UT_ApplicationService
         // Do the initial test
         Assert.That(this._ApplicationService, Is.Not.Null);
 
-        // Call the service
-        var retorno = this._ApplicationService.StartupTime;
+        // Act
+        var result = this._ApplicationService.StartupTime;
 
         // Do the tests
         Assert.Multiple(() =>
         {
-            Assert.That(retorno.ToString(), Is.Not.Empty);
-            Assert.That(retorno.GetType(), Is.EqualTo(typeof(DateTime)));
-            Assert.That(retorno, Is.LessThanOrEqualTo(DateTime.Now));
+            Assert.That(result.ToString(), Is.Not.Empty);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(DateTime)));
+            Assert.That(result, Is.LessThanOrEqualTo(DateTime.Now));
         });
     }
 
@@ -63,14 +63,14 @@ public class UT_ApplicationService
         // Do the initial test
         Assert.That(this._ApplicationService, Is.Not.Null);
 
-        // Call the service
-        var retorno = this._ApplicationService.FrameworkVersion;
+        // Act
+        var result = this._ApplicationService.FrameworkVersion;
 
         // Do the tests
         Assert.Multiple(() =>
         {
-            Assert.That(retorno, Is.Not.Null);
-            Assert.That(retorno, Is.Not.Empty);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.Not.Empty);
         });
     }    
 }

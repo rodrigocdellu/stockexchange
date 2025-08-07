@@ -15,10 +15,11 @@ public class ApplicationService : IApplicationService
     {
         // Get the UTC now
         var utcNow = DateTime.UtcNow;
+        var targetTimeZone = utcNow.PrepareForDockerization();
 
         // Set the values (considering docker container UTC 0)
-        this.TimeZone = utcNow.PrepareTimeZoneForDockerization();
-        this.StartupTime = utcNow.PrepareDateTimeForDockerization();
+        this.TimeZone = targetTimeZone.DisplayName;
+        this.StartupTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, targetTimeZone);
         this.FrameworkVersion = RuntimeInformation.FrameworkDescription;
     }
 }
