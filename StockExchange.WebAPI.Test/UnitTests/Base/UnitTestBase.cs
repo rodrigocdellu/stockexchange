@@ -17,6 +17,7 @@ namespace StockExchange.WebAPI.Test.UnitTests.Base
 
             // Records real dependencies
             services.AddTransient<IApplicationService, ApplicationService>();
+            services.AddTransient<ICdbService, CdbService>();
             services.AddTransient<ITimeZoneProvider, SystemTimeZoneProvider>();
 
             // Builds the provider (container)

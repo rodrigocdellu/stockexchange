@@ -1,12 +1,14 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using StockExchange.WebAPI.DTOs;
 using StockExchange.WebAPI.Services;
 using StockExchange.WebAPI.Test.Helpers;
+using StockExchange.WebAPI.Test.UnitTests.Base;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
-public class UT_CdbService
+public sealed class UT_CdbService : UnitTestBase
 {
     private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1'.";
 
@@ -21,89 +23,107 @@ public class UT_CdbService
     [SetUp]
     public void Setup()
     {        
-        // Load data
+        // Load data for each test
         this.Samples = TestHelper.LoadData();        
     }
 
     [Test]
     public void Test_ResultadosInvestimentosValidos()
     {
-        // Do the initial tests
-        Assert.That(this.Samples, Is.Not.Null);
-
-        // Scan the list
-        foreach (var sample in this.Samples)
+        try
         {
+            // Do the initial tests
+            Assert.That(this.Samples, Is.Not.Null);
+
             // Scan the list
-            foreach (var retornoValido in sample.RetornosValidos)
+            foreach (var sample in this.Samples)
             {
-                // Define the variables
-                decimal investimento;
-                uint meses;
-                decimal resultadoBruto;
-                decimal resultadoLiquido;
+                // Scan the list
+                foreach (var retornoValido in sample.RetornosValidos)
+                {
+                    // Define the variables
+                    decimal investimento;
+                    uint meses;
+                    decimal resultadoBruto;
+                    decimal resultadoLiquido;
 
-                // Cast variables for the service
-                TestHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
+                    // Cast variables for the service
+                    TestHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
-                // Create the service
-                var service = new CdbService();
+                    // Get the service via dependency injection
+                    var service = this._Provider.GetRequiredService<ICdbService>();
 
-                // Call the service
-                var retorno = service.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
+                    // Act
+                    var retorno = service.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
 
-                // If there is no data, the test fail
-                if (retorno == null)
-                    Assert.Fail();
-                else
-                    // Do the tests
-                    Assert.Multiple(() =>
-                    {
-                        Assert.That(retorno.ResultadoBruto, Is.EqualTo(resultadoBruto));
-                        Assert.That(retorno.ResultadoLiquido, Is.EqualTo(resultadoLiquido));
-                    });
+                    // If there is no data, the test fail
+                    if (retorno == null)
+                        // Assert
+                        Assert.Fail();
+                    else
+                        // Assert
+                        Assert.Multiple(() =>
+                        {
+                            Assert.That(retorno.ResultadoBruto, Is.EqualTo(resultadoBruto));
+                            Assert.That(retorno.ResultadoLiquido, Is.EqualTo(resultadoLiquido));
+                        });
+                }
             }
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
     [Test]
     public void Test_ResultadosInvestimentosInvalidos()
     {
-        // Do the initial tests
-        Assert.That(this.Samples, Is.Not.Null);
-
-        // Scan the list
-        foreach (var sample in this.Samples)
+        try
         {
+            // Do the initial tests
+            Assert.That(this.Samples, Is.Not.Null);
+
             // Scan the list
-            foreach (var retornoInvalido in sample.RetornosInvalidos)
+            foreach (var sample in this.Samples)
             {
-                // Define the variables
-                decimal investimento;
-                uint meses;
-                decimal resultadoBruto;
-                decimal resultadoLiquido;
+                // Scan the list
+                foreach (var retornoInvalido in sample.RetornosInvalidos)
+                {
+                    // Define the variables
+                    decimal investimento;
+                    uint meses;
+                    decimal resultadoBruto;
+                    decimal resultadoLiquido;
 
-                // Cast variables for the service
-                TestHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
+                    // Cast variables for the service
+                    TestHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
-                // Create the service
-                var service = new CdbService();
+                    // Get the service via dependency injection
+                    var service = this._Provider.GetRequiredService<ICdbService>();
 
-                // Call the service
-                var retorno = service.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
+                    // Act
+                    var retorno = service.SolicitarCalculoInvestimento(new InvestimentoDto() { Valor = investimento, Meses = meses }).Result.Data;
 
-                // If there is no data, the test fail
-                if (retorno == null)
-                    Assert.Fail();
-                else
-                    // Do the tests
-                    Assert.Multiple(() =>
-                    {
-                        Assert.That(retorno.ResultadoBruto, !Is.EqualTo(resultadoBruto));
-                        Assert.That(retorno.ResultadoLiquido, !Is.EqualTo(resultadoLiquido));
-                    });
+                    // If there is no data, the test fail
+                    if (retorno == null)
+                        // Assert
+                        Assert.Fail();
+                    else
+                        // Assert
+                        Assert.Multiple(() =>
+                        {
+                            Assert.That(retorno.ResultadoBruto, !Is.EqualTo(resultadoBruto));
+                            Assert.That(retorno.ResultadoLiquido, !Is.EqualTo(resultadoLiquido));
+                        });
+                }
             }
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -113,22 +133,30 @@ public class UT_CdbService
     [Test]
     public void Test_MesesMinimo()
     {
-        // Load data
-        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1u };
-
-        // Create the service
-        var service = new CdbService();
-        
-        // Call the service
-        var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE.Concat(Environment.NewLine)));
-            Assert.That(retorno.Success, Is.False);
-        });
+            // Arrange
+            var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1u };
+
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<ICdbService>();
+
+            // Act
+            var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(retorno.Data, Is.Null);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Success, Is.False);
+            });
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 
     /// <summary>
@@ -137,71 +165,95 @@ public class UT_CdbService
     [Test]
     public void Test_MesesMaximo()
     {
-        // Load data
-        var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1201u };
-
-        // Create the service
-        var service = new CdbService();
-
-        // Call the service
-        var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE.Concat(Environment.NewLine)));
-            Assert.That(retorno.Success, Is.False);
-        });
+            // Arrange
+            var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1201u };
+
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<ICdbService>();
+
+            // Act
+            var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(retorno.Data, Is.Null);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Success, Is.False);
+            });
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 
     [Test]
     public void Test_InvestimentoNegativo()
     {
-        // Load data
-        var investimento = new InvestimentoDto() { Valor = -1m, Meses = 2u };
-
-        // Create the service
-        var service = new CdbService();
-
-        // Call the service
-        var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE.Concat(Environment.NewLine)));
-            Assert.That(retorno.Success, Is.False);
-        });
+            // Arrange
+            var investimento = new InvestimentoDto() { Valor = -1m, Meses = 2u };
+
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<ICdbService>();
+
+            // Act
+            var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(retorno.Data, Is.Null);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Success, Is.False);
+            });
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 
     [Test]
     public void Test_InvestimentoExcecao()
     {
-        // Load data
-        var investimento = new InvestimentoDto() { Valor = 0m, Meses = 0u };
-
-        // Create the Mock
-        var mockValidator = new Mock<IValidator<InvestimentoDto>>();
-
-        // Setup the Mock
-        mockValidator
-            .Setup(v => v.Validate(It.IsAny<InvestimentoDto>()))
-            .Throws(new Exception(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
-
-        // Create the service
-        var service = new CdbService(mockValidator.Object);
-
-        // Call the service
-        var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(retorno.Data, Is.Null);
-            Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
-            Assert.That(retorno.Success, Is.False);
-        });
+            // Arrange
+            var investimento = new InvestimentoDto() { Valor = 0m, Meses = 0u };
+
+            // Create the Mock
+            var mockValidator = new Mock<IValidator<InvestimentoDto>>();
+
+            // Setup the Mock
+            mockValidator
+                .Setup(v => v.Validate(It.IsAny<InvestimentoDto>()))
+                .Throws(new Exception(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
+
+            // Get the service via dependency injection
+            var service = ActivatorUtilities.CreateInstance<CdbService>(this._Provider, mockValidator.Object);
+
+            // Act
+            var retorno = service.SolicitarCalculoInvestimento(investimento).Result;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(retorno.Data, Is.Null);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
+                Assert.That(retorno.Success, Is.False);
+            });
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 }

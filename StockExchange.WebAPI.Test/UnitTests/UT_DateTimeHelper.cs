@@ -40,7 +40,7 @@ public sealed class UT_DateTimeHelper : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{UT_DateTimeHelper.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 }
