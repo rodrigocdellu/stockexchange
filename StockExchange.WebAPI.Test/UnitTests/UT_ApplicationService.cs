@@ -1,76 +1,101 @@
-﻿using StockExchange.WebAPI.Helpers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using StockExchange.WebAPI.Helpers;
 using StockExchange.WebAPI.Services;
+using StockExchange.WebAPI.Test.UnitTests.Base;
+using System.Runtime.InteropServices;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
-public class UT_ApplicationService
+public sealed class UT_ApplicationService : UnitTestBase
 {
-    private IApplicationService? _ApplicationService;
-
-    [SetUp]
-    public void Setup()
+    [Test]
+    public void Test_ApplicationTimeZone()
     {
-        // Create the service
-        this._ApplicationService = new ApplicationService();
+        try
+        {
+            // Arrange
+            var brasilianTimeZone = DateTime.UtcNow.PrepareForDockerization().DisplayName;
+
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<IApplicationService>();
+
+            // Act
+            var result = service.TimeZone;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result, Is.Not.Empty);
+                Assert.That(result, Is.TypeOf<string>());
+                Assert.That(result, Is.EqualTo(brasilianTimeZone));
+            });
+        }
+        catch (Exception exception)
+        {
+            // Fail on exception
+            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 
     [Test]
-    public void Test_FusoHorario()
+    public void Test_ApplicationStartupTime()
     {
-        // Load data
-        var brasilianTimeZone = DateTimeHelper.GetBrasilianTimeZone(new SystemTimeZoneProvider());
-
-        // Do the initial tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(brasilianTimeZone, Is.Not.Null);
-            Assert.That(this._ApplicationService, Is.Not.Null);
-        });
-        
-        // Act
-        var result = this._ApplicationService.TimeZone;
+            // Arrange
+            var utcNow = DateTime.UtcNow;
+            var brasilianStartupTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, utcNow.PrepareForDockerization());
 
-        // Do the tests
-        Assert.Multiple(() =>
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<IApplicationService>();
+
+            // Act
+            var result = service.StartupTime;
+
+            // Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.ToString(), Is.Not.Empty);
+                Assert.That(result, Is.TypeOf<DateTime>());
+                Assert.That(result, Is.GreaterThanOrEqualTo(brasilianStartupTime));
+            });
+        }
+        catch (Exception exception)
         {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.Not.Empty);
-            Assert.That(result, Is.EqualTo(brasilianTimeZone.DisplayName));
-        });
+            // Fail on exception
+            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }        
     }
 
     [Test]
-    public void Test_TempoInicializacao()
+    public void Test_ApplicationFrameworkVersion()
     {
-        // Do the initial test
-        Assert.That(this._ApplicationService, Is.Not.Null);
-
-        // Act
-        var result = this._ApplicationService.StartupTime;
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(result.ToString(), Is.Not.Empty);
-            Assert.That(result.GetType(), Is.EqualTo(typeof(DateTime)));
-            Assert.That(result, Is.LessThanOrEqualTo(DateTime.Now));
-        });
-    }
+            // Arrange
+            var frameworkVersiona = RuntimeInformation.FrameworkDescription;
 
-    [Test]
-    public void Test_VersaoFramework()
-    {
-        // Do the initial test
-        Assert.That(this._ApplicationService, Is.Not.Null);
+            // Get the service via dependency injection
+            var service = this._Provider.GetRequiredService<IApplicationService>();
 
-        // Act
-        var result = this._ApplicationService.FrameworkVersion;
+            // Act
+            var result = service.FrameworkVersion;
 
-        // Do the tests
-        Assert.Multiple(() =>
+            // Assert
+            Assert.Multiple(() =>
+            {
+
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result, Is.Not.Empty);
+                Assert.That(result, Is.TypeOf<string>());
+                Assert.That(result, Is.EqualTo(frameworkVersiona));
+            });
+        }
+        catch (Exception exception)
         {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result, Is.Not.Empty);
-        });
+            // Fail on exception
+            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }    
 }

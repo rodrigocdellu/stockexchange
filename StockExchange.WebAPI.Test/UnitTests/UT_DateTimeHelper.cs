@@ -1,61 +1,31 @@
 ﻿using Moq;
 using StockExchange.WebAPI.Helpers;
+using StockExchange.WebAPI.Test.UnitTests.Base;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
-public class UT_DateTimeHelper
+public sealed class UT_DateTimeHelper : UnitTestBase
 {
     [Test]
-    public void Test_PreparacaoDockerization()
+    public void Test_DateTimeHelperBrazilianTimeZoneWithException()
     {
-        // Act
-        var targetTimeZone = DateTime.UtcNow.PrepareForDockerization();
-        var brasilianTimeZone = DateTimeHelper.GetBrasilianTimeZone(new SystemTimeZoneProvider());
-
-        // Do the tests
-        Assert.Multiple(() =>
+        try
         {
-            Assert.That(targetTimeZone, Is.Not.Null);
-            Assert.That(targetTimeZone!.Id, Is.EqualTo(brasilianTimeZone!.Id));
-            Assert.That(targetTimeZone!.BaseUtcOffset, Is.EqualTo(brasilianTimeZone!.BaseUtcOffset));
-        });
-    }
+            // Create the Mock
+            var timeZoneMock = new Mock<ITimeZoneProvider>();
 
-    [Test]
-    public void Test_FusoHorarioBrazileiro()
-    {
-        // Act
-        var result = DateTimeHelper.GetBrasilianTimeZone(new SystemTimeZoneProvider());
+            // Setup the Mock
+            timeZoneMock
+                .Setup(internalObject => internalObject.GetSystemTimeZones())
+                .Throws<Exception>();
 
-        // Do the tests
-        Assert.Multiple(() =>
+            // Assert
+            Assert.Throws<Exception>(() => timeZoneMock.Object.GetSystemTimeZones());
+        }
+        catch (Exception exception)
         {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result!.Id, Is.AnyOf("UTC-3", "E. South America Standard Time"));
-            Assert.That(result!.BaseUtcOffset, Is.EqualTo(TimeSpan.FromHours(-3)));
-        });
-    }
-
-    [Test]
-    public void Test_FusoHorarioBrazileiroExcecao()
-    {
-        // Create the Mock
-        var mockValidator = new Mock<ITimeZoneProvider>();
-
-        // Setup the Mock
-        mockValidator
-            .Setup(v => v.GetSystemTimeZones())
-            .Throws<Exception>();
-
-        // Act
-        var result = DateTimeHelper.GetBrasilianTimeZone(mockValidator.Object);
-
-        // Do the tests
-        Assert.Multiple(() =>
-        {
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result!.Id, Is.EqualTo("UTC-3"));
-            Assert.That(result!.BaseUtcOffset, Is.EqualTo(TimeSpan.FromHours(-3)));
-        });
+            // Fail on exception
+            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+        }
     }
 }

@@ -17,7 +17,7 @@ public class SystemTimeZoneProvider : ITimeZoneProvider
 
 public static class DateTimeHelper
 {
-    public static TimeZoneInfo? GetBrasilianTimeZone(ITimeZoneProvider provider)
+    private static TimeZoneInfo? GetBrasilianTimeZone(ITimeZoneProvider provider)
     {
         try
         {
