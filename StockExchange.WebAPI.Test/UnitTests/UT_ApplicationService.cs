@@ -14,7 +14,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         try
         {
             // Arrange
-            var brasilianTimeZone = DateTime.UtcNow.PrepareForDockerization().DisplayName;
+            var timeZone = DateTime.UtcNow.PrepareForDockerization().DisplayName;
 
             // Get the service via dependency injection
             var service = this._Provider.GetRequiredService<IApplicationService>();
@@ -28,7 +28,7 @@ public sealed class UT_ApplicationService : UnitTestBase
                 Assert.That(result, Is.Not.Null);
                 Assert.That(result, Is.Not.Empty);
                 Assert.That(result, Is.TypeOf<string>());
-                Assert.That(result, Is.EqualTo(brasilianTimeZone));
+                Assert.That(result, Is.EqualTo(timeZone));
             });
         }
         catch (Exception exception)
@@ -45,7 +45,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         {
             // Arrange
             var utcNow = DateTime.UtcNow;
-            var brasilianStartupTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, utcNow.PrepareForDockerization());
+            var startupTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, utcNow.PrepareForDockerization());
 
             // Get the service via dependency injection
             var service = this._Provider.GetRequiredService<IApplicationService>();
@@ -58,7 +58,7 @@ public sealed class UT_ApplicationService : UnitTestBase
             {
                 Assert.That(result.ToString(), Is.Not.Empty);
                 Assert.That(result, Is.TypeOf<DateTime>());
-                Assert.That(result, Is.GreaterThanOrEqualTo(brasilianStartupTime));
+                Assert.That(result, Is.GreaterThanOrEqualTo(startupTime));
             });
         }
         catch (Exception exception)
@@ -74,7 +74,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         try
         {
             // Arrange
-            var frameworkVersiona = RuntimeInformation.FrameworkDescription;
+            var frameworkVersion = RuntimeInformation.FrameworkDescription;
 
             // Get the service via dependency injection
             var service = this._Provider.GetRequiredService<IApplicationService>();
@@ -89,7 +89,7 @@ public sealed class UT_ApplicationService : UnitTestBase
                 Assert.That(result, Is.Not.Null);
                 Assert.That(result, Is.Not.Empty);
                 Assert.That(result, Is.TypeOf<string>());
-                Assert.That(result, Is.EqualTo(frameworkVersiona));
+                Assert.That(result, Is.EqualTo(frameworkVersion));
             });
         }
         catch (Exception exception)
