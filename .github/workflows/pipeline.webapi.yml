@@ -63,7 +63,8 @@ jobs:
             /d:sonar.host.url="https://sonarcloud.io" `
             /d:sonar.cs.opencover.reportsPaths=**/StockExchange.WebAPI.Test/TestResults/*/coverage.opencover.xml `
             /d:sonar.cs.vstest.reportsPaths=**/StockExchange.WebAPI.Test/TestResults/*.trx `
-            /d:sonar.exclusions=**/StockExchange.AngularUI/**
+            /d:sonar.exclusions=**/StockExchange.AngularUI/**,**/StockExchange.ReactUI/** `
+            /d:sonar.coverage.exclusions=**/Program.cs
 
       - name: Restore dependencies
         shell: powershell
