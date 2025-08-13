@@ -8,6 +8,7 @@ using StockExchange.WebAPI.Test.UnitTests.Base;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
+[TestFixture]
 public sealed class UT_CdbService : UnitTestBase
 {
     private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1'.";

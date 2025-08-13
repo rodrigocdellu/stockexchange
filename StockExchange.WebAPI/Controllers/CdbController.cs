@@ -45,5 +45,5 @@ public sealed class CdbController : ControllerBase
             // Return error result
             return StatusCode(Convert.ToInt32(HttpStatusCode.InternalServerError), exception);
         }
-    }     
+    }
 }

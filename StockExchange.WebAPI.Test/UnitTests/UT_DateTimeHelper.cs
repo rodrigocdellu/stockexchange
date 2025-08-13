@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
+[TestFixture]
 public sealed class UT_DateTimeHelper : UnitTestBase
 {
     [Test]

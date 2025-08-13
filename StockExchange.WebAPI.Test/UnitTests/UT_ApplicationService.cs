@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
+[TestFixture]
 public sealed class UT_ApplicationService : UnitTestBase
 {
     [Test]
