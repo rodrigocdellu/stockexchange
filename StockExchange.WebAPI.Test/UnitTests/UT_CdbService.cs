@@ -29,7 +29,7 @@ public sealed class UT_CdbService : UnitTestBase
     }
 
     [Test]
-    public void Test_ResultadosInvestimentosValidos()
+    public void Test_TryGetValidInvestmentResults()
     {
         try
         {
@@ -79,7 +79,7 @@ public sealed class UT_CdbService : UnitTestBase
     }
 
     [Test]
-    public void Test_ResultadosInvestimentosInvalidos()
+    public void Test_TryGetInvalidInvestmentResults()
     {
         try
         {
@@ -132,7 +132,7 @@ public sealed class UT_CdbService : UnitTestBase
     /// O valor mínimo de meses deve ser maior que 1.
     /// </summary>
     [Test]
-    public void Test_MesesMinimo()
+    public void Test_TryGetMinimumMonths()
     {
         try
         {
@@ -164,7 +164,7 @@ public sealed class UT_CdbService : UnitTestBase
     /// Adicionado por conta de uma solicitação de segurança do SonarQube.
     /// </summary>
     [Test]
-    public void Test_MesesMaximo()
+    public void Test_TryGetMaximumMonths()
     {
         try
         {
@@ -193,7 +193,7 @@ public sealed class UT_CdbService : UnitTestBase
     }
 
     [Test]
-    public void Test_InvestimentoNegativo()
+    public void Test_TryGetNegativeInvestment()
     {
         try
         {
@@ -222,7 +222,7 @@ public sealed class UT_CdbService : UnitTestBase
     }
 
     [Test]
-    public void Test_InvestimentoExcecao()
+    public void Test_TryGetInvestmentWithException()
     {
         try
         {

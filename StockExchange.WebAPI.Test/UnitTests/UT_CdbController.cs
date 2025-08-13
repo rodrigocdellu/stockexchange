@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using StockExchange.WebAPI.Helpers;
-using StockExchange.WebAPI.Services;
-using StockExchange.WebAPI.Test.UnitTests.Base;
+﻿using StockExchange.WebAPI.Test.UnitTests.Base;
 
 namespace StockExchange.WebAPI.Test.UnitTests;
 
@@ -9,27 +6,11 @@ namespace StockExchange.WebAPI.Test.UnitTests;
 public sealed class UT_CdbController : UnitTestBase
 {
     [Test]
-    public void Test_ApplicationTimeZone()
+    public void Test_TryGetValidInvestmentResults()
     {
         try
         {
-            // Arrange
-            var timeZone = DateTime.UtcNow.PrepareForDockerization().DisplayName;
-
-            // Get the service via dependency injection
-            var service = this._Provider.GetRequiredService<IApplicationService>();
-
-            // Act
-            var result = service.TimeZone;
-
-            // Assert
-            Assert.Multiple(() =>
-            {
-                Assert.That(result, Is.Not.Null);
-                Assert.That(result, Is.Not.Empty);
-                Assert.That(result, Is.TypeOf<string>());
-                Assert.That(result, Is.EqualTo(timeZone));
-            });
+            //ToDo: Implement the test for CdbController
         }
         catch (Exception exception)
         {

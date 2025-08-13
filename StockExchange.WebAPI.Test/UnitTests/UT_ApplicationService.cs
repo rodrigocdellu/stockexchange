@@ -10,7 +10,7 @@ namespace StockExchange.WebAPI.Test.UnitTests;
 public sealed class UT_ApplicationService : UnitTestBase
 {
     [Test]
-    public void Test_ApplicationTimeZone()
+    public void Test_TryGetTimeZone()
     {
         try
         {
@@ -40,7 +40,7 @@ public sealed class UT_ApplicationService : UnitTestBase
     }
 
     [Test]
-    public void Test_ApplicationStartupTime()
+    public void Test_TryGetStartupTime()
     {
         try
         {
@@ -70,7 +70,7 @@ public sealed class UT_ApplicationService : UnitTestBase
     }
 
     [Test]
-    public void Test_ApplicationFrameworkVersion()
+    public void Test_TryGetFrameworkVersion()
     {
         try
         {

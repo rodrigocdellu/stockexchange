@@ -9,7 +9,7 @@ namespace StockExchange.WebAPI.Test.UnitTests;
 public sealed class UT_DateTimeHelper : UnitTestBase
 {
     [Test]
-    public void Test_DateTimeHelperBrazilianTimeZoneWithException()
+    public void Test_TryGetBrazilianTimeZoneWithException()
     {
         try
         {
