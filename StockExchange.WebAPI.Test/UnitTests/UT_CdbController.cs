@@ -67,14 +67,14 @@ public sealed class UT_CdbController : UnitTestBase
         try
         {
             // Arrange
-            var investimento = new InvestimentoDto() { Valor = 1m, Meses = 1u };
+            var investimento = new InvestimentoDto() { Valor = 1m, Meses = 2u };
 
             this._CDBServiceMock
                 .Setup(internalObject => internalObject.SolicitarCalculoInvestimento(investimento))
                 .ReturnsAsync(new ServiceResultHelper<RetornoDto>
                 {
                     Success = false,
-                    ErrorMessage = GeneralHelper.MINIMUMMONTHS_MESSAGE,
+                    ErrorMessage = GeneralHelper.UNEXPECTEDERROR_MESSAGE,
                 });
 
             // Act
