@@ -11,21 +11,13 @@ namespace StockExchange.WebAPI.Test.UnitTests;
 [TestFixture]
 public sealed class UT_CdbService : UnitTestBase
 {
-    private const string TEST_MESESMINIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1'.";
-
-    private const string TEST_MESESMAXIMO_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1201'.";
-
-    private const string TEST_INVESTIMENTONEGATIVO_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
-
-    private const string TEST_INVESTIMENTOEXCECAO_MESSAGE = "Exceção forçada para testes.";
-
     private List<RetornoContainerHelper>? Samples { get; set; }
 
     [SetUp]
     public void Setup()
     {        
         // Load data for each test
-        this.Samples = TestHelper.LoadData();        
+        this.Samples = GeneralHelper.LoadData();        
     }
 
     [Test]
@@ -49,7 +41,7 @@ public sealed class UT_CdbService : UnitTestBase
                     decimal resultadoLiquido;
 
                     // Cast variables for the service
-                    TestHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
+                    GeneralHelper.CastData(retornoValido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                     // Get the service via dependency injection
                     var service = this._Provider.GetRequiredService<ICdbService>();
@@ -74,7 +66,7 @@ public sealed class UT_CdbService : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -99,7 +91,7 @@ public sealed class UT_CdbService : UnitTestBase
                     decimal resultadoLiquido;
 
                     // Cast variables for the service
-                    TestHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
+                    GeneralHelper.CastData(retornoInvalido, out investimento, out meses, out resultadoBruto, out resultadoLiquido);
 
                     // Get the service via dependency injection
                     var service = this._Provider.GetRequiredService<ICdbService>();
@@ -115,8 +107,8 @@ public sealed class UT_CdbService : UnitTestBase
                         // Assert
                         Assert.Multiple(() =>
                         {
-                            Assert.That(retorno.ResultadoBruto, !Is.EqualTo(resultadoBruto));
-                            Assert.That(retorno.ResultadoLiquido, !Is.EqualTo(resultadoLiquido));
+                            Assert.That(retorno.ResultadoBruto, Is.Not.EqualTo(resultadoBruto));
+                            Assert.That(retorno.ResultadoLiquido, Is.Not.EqualTo(resultadoLiquido));
                         });
                 }
             }
@@ -124,7 +116,7 @@ public sealed class UT_CdbService : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -148,15 +140,15 @@ public sealed class UT_CdbService : UnitTestBase
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(retorno.Data, Is.Null);
-                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMINIMO_MESSAGE.Concat(Environment.NewLine)));
                 Assert.That(retorno.Success, Is.False);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(GeneralHelper.MINIMUMMONTHS_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Data, Is.Null);                                
             });
         }
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -180,15 +172,15 @@ public sealed class UT_CdbService : UnitTestBase
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(retorno.Data, Is.Null);
-                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_MESESMAXIMO_MESSAGE.Concat(Environment.NewLine)));
                 Assert.That(retorno.Success, Is.False);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(GeneralHelper.MONTHSMAXIMUM_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Data, Is.Null);                
             });
         }
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -209,15 +201,15 @@ public sealed class UT_CdbService : UnitTestBase
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(retorno.Data, Is.Null);
-                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTONEGATIVO_MESSAGE.Concat(Environment.NewLine)));
                 Assert.That(retorno.Success, Is.False);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(GeneralHelper.NEGATIVEINVESTMENT_MESSAGE.Concat(Environment.NewLine)));
+                Assert.That(retorno.Data, Is.Null);
             });
         }
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -234,8 +226,8 @@ public sealed class UT_CdbService : UnitTestBase
 
             // Setup the Mock
             mockValidator
-                .Setup(v => v.Validate(It.IsAny<InvestimentoDto>()))
-                .Throws(new Exception(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
+                .Setup(internalObject => internalObject.Validate(It.IsAny<InvestimentoDto>()))
+                .Throws(new Exception(GeneralHelper.EXCEPTIONINVESTMENT_MESSAGE));
 
             // Get the service via dependency injection
             var service = ActivatorUtilities.CreateInstance<CdbService>(this._Provider, mockValidator.Object);
@@ -246,15 +238,15 @@ public sealed class UT_CdbService : UnitTestBase
             // Assert
             Assert.Multiple(() =>
             {
-                Assert.That(retorno.Data, Is.Null);
-                Assert.That(retorno.ErrorMessage, Is.EqualTo(UT_CdbService.TEST_INVESTIMENTOEXCECAO_MESSAGE));
                 Assert.That(retorno.Success, Is.False);
+                Assert.That(retorno.ErrorMessage, Is.EqualTo(GeneralHelper.EXCEPTIONINVESTMENT_MESSAGE));
+                Assert.That(retorno.Data, Is.Null);
             });
         }
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_CdbService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 }

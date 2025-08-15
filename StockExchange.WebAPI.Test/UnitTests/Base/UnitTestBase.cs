@@ -6,7 +6,6 @@ namespace StockExchange.WebAPI.Test.UnitTests.Base
 {
     public class UnitTestBase
     {
-        protected const string TEST_ANOTHEREXCEPTION_MESSAGE = "Another exception was thrown";
         protected ServiceProvider _Provider;
 
         [OneTimeSetUp]

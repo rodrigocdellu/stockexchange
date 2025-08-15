@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StockExchange.WebAPI.Helpers;
 using StockExchange.WebAPI.Services;
+using StockExchange.WebAPI.Test.Helpers;
 using StockExchange.WebAPI.Test.UnitTests.Base;
 using System.Runtime.InteropServices;
 
@@ -35,7 +36,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 
@@ -65,7 +66,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }        
     }
 
@@ -96,7 +97,7 @@ public sealed class UT_ApplicationService : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_ApplicationService.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }    
 }

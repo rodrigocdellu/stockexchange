@@ -1,5 +1,6 @@
 ﻿using Moq;
 using StockExchange.WebAPI.Helpers;
+using StockExchange.WebAPI.Test.Helpers;
 using StockExchange.WebAPI.Test.UnitTests.Base;
 using System.Reflection;
 
@@ -41,7 +42,7 @@ public sealed class UT_DateTimeHelper : UnitTestBase
         catch (Exception exception)
         {
             // Fail on exception
-            Assert.Fail($"{UT_DateTimeHelper.TEST_ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
+            Assert.Fail($"{GeneralHelper.ANOTHEREXCEPTION_MESSAGE}: {exception.Message}");
         }
     }
 }

@@ -3,11 +3,23 @@ using System.Globalization;
 
 namespace StockExchange.WebAPI.Test.Helpers;
 
-internal sealed class TestHelper
+internal sealed class GeneralHelper
 {
     private const string DEFAULTSAMPLEDATAPATH = @"Scenarios/RetornoSample.json";
 
-    internal static List<RetornoContainerHelper>? LoadData(string sampleDataPath = TestHelper.DEFAULTSAMPLEDATAPATH)
+    internal const string MINIMUMMONTHS_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1'.";
+
+    internal const string MONTHSMAXIMUM_MESSAGE = "O parâmetro 'meses' deve ser maior que 1 e menor do que 1201. Valor fornecido: '1201'.";
+
+    internal const string NEGATIVEINVESTMENT_MESSAGE = "O parâmetro 'valor' deve ser maior que 0.00. Valor fornecido: '-1'.";
+
+    internal const string EXCEPTIONINVESTMENT_MESSAGE = "Exceção forçada para testes.";
+
+    internal const string UNEXPECTEDERROR_MESSAGE = "Unexpected error.";
+
+    internal const string ANOTHEREXCEPTION_MESSAGE = "Another exception was thrown";
+
+    internal static List<RetornoContainerHelper>? LoadData(string sampleDataPath = GeneralHelper.DEFAULTSAMPLEDATAPATH)
     {
         try
         {
