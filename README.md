@@ -62,7 +62,7 @@ git clone git@github.com:rodrigocdellu/stockexchange.git;
 2. Execute a Interface com Usuário Angular com Material (Front-end Angular):
 
 ```
-cd stockexchange/StockExchange.AngularUI/; npm install; ng serve
+cd stockexchange/StockExchange.AngularUI/; npm install -g @angular/cli; npm install; ng serve
 ```
 
 3. Execute a Interface com Usuário React com Material (Front-end React):
