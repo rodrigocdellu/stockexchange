@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HelloWorld from './app/components/solicitacao/HelloWorld.vue'
+import SolicitacaoComponent from './app/components/solicitacao/SolicitacaoComponent.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <SolicitacaoComponent />
 </template>
