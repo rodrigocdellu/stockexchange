@@ -235,11 +235,9 @@ figure figcaption {
                     @keydown="blockDecimal"
                 />
 
-                <v-btn color="primary" type="submit">Solicitar</v-btn>
+                <v-btn class="buttonSpaceLeft" variant="outlined" color="primary" type="submit">Solicitar</v-btn>
 
-                <v-btn class="ml-2" variant="outlined" color="primary" type="button" @click="clearFields">
-                    Limpar
-                </v-btn>
+                <v-btn class="buttonSpaceRight" variant="outlined" color="primary" @click="clearFields">Limpar</v-btn>
             </v-form>
         </div>
         <div class="internalCard">
