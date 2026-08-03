@@ -10,13 +10,30 @@ jobs:
   frontend:
     name: Frontend - Angular - Analyze
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: StockExchange.AngularUI
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Begin Sonar analysis
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.19'
+
+      - name: Install Angular CLI
+        run: npm ci -g @angular/cli
+
+      - name: Install StockExchange.AngularUI Dependencies
+        run: npm ci
+
+      - name: Build StockExchange.AngularUI
+        run: ng build
+
+      - name: Begin Sonar Analysis for StockExchange.AngularUI
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

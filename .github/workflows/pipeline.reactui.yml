@@ -24,13 +24,13 @@ jobs:
         with:
           node-version: '20.19'
 
-      - name: Install dependencies
+      - name: Install StockExchange.ReactUI Dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build StockExchange.ReactUI
         run: npm run build
 
-      - name: Begin Sonar analysis
+      - name: Begin Sonar Analysis for StockExchange.ReactUI
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
