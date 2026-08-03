@@ -22,10 +22,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19'
+          node-version: '26.0.0'
 
       - name: Install Angular CLI
-        run: npm i -g @angular/cli@latest --ignore-scripts
+        run: npm i -g @angular/cli@21-lts --ignore-scripts
 
       - name: Install StockExchange.AngularUI Dependencies
         run: npm ci --ignore-scripts

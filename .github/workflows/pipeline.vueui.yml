@@ -22,7 +22,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19'
+          node-version: '26.0.0'
 
       - name: Install StockExchange.VueUI Dependencies
         run: npm ci --ignore-scripts
