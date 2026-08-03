@@ -121,7 +121,16 @@ function onCloseSnack(): void {
 }
 </script>
 
-<style scoped>
+<style>
+:root {
+    --primary-white: #ffffff;
+    --secondary-white: #e8f5ee;
+    --primary-color: #42b883;
+    --secondary-color: #5ccf9b;
+    --primary-black: #35495e;
+    --font-color: #333333;
+}
+
 .card, .internalCard {
     box-shadow: 0 4px 8px rgba(183, 28, 28, 0.1);
     border-radius: 12px;
@@ -129,7 +138,7 @@ function onCloseSnack(): void {
 
 .card {
     padding: 2rem 3rem;
-    max-width: 500px;
+    width: 597px;
     background-color: var(--primary-white);
 }
 
@@ -172,12 +181,17 @@ function onCloseSnack(): void {
 }
 
 .buttonSpaceLeft, .buttonSpaceRight {
-    margin-top: 42px !important;
+    margin-top: 28px !important;
 }
 
 .buttonSpaceLeft {
-    margin-left: -23px !important;
+    margin-left: -10px !important;
     margin-right: 40px !important;
+}
+
+.inLine {
+    display: flex;
+    margin: 34px 37px 0px 37px;
 }
 
 h1, h2 {
@@ -188,8 +202,21 @@ p, figure {
     font-size: 0.9rem;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--secondary-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--font-color);
+}
+
 h1 {
-    margin: 6px 0 1rem 0;
+    margin: 20px 0 1rem 0;
 }
 
 strong {
@@ -215,25 +242,29 @@ figure figcaption {
         <div class="internalCard">
             <h2>Solicitar o Calculo do Investimento CDB</h2>
             <v-form @submit.prevent="onSubmit">
-                <v-text-field v-model="form.investimento"
-                    label="Investimento *"
-                    placeholder="Ex: R$ 0,01"
-                    prefix="R$ "
-                    variant="outlined"
-                    density="comfortable"
-                    :error-messages="errors.investimento ? [errors.investimento] : []"
-                    @keydown="blockDecimal"
-                />
+                <div class="inLine">
+                    <v-text-field v-model="form.investimento"
+                        class="textField"
+                        label="Investimento *"
+                        placeholder="Ex: R$ 0,01"
+                        prefix="R$ "
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="errors.investimento ? [errors.investimento] : []"
+                        @keydown="blockDecimal"
+                    />
 
-                <v-text-field v-model="form.meses"
-                    label="Meses *"
-                    type="number"
-                    placeholder="Ex: 24"
-                    variant="outlined"
-                    density="comfortable"
-                    :error-messages="errors.meses ? [errors.meses] : []"
-                    @keydown="blockDecimal"
-                />
+                    <v-text-field v-model="form.meses"
+                        class="textField"
+                        label="Meses *"
+                        type="number"
+                        placeholder="Ex: 24"
+                        variant="outlined"
+                        density="comfortable"
+                        :error-messages="errors.meses ? [errors.meses] : []"
+                        @keydown="blockDecimal"
+                    />
+                </div>
 
                 <v-btn class="buttonSpaceLeft" variant="outlined" color="primary" type="submit">Solicitar</v-btn>
 
