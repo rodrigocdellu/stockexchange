@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import type { RetornoModel } from '../models/RetornoModel';
 
 export class CdbService {
@@ -11,17 +9,24 @@ export class CdbService {
         // Define the service action
         const action = 'SolicitarCalculoInvestimento';
 
-        // Set the service url
-        const url = `${this.baseURL}/${this.controller}/${action}/${action}?Valor=${investimento}&Meses=${meses}`;
+        // Set the service url (encode params)
+        const url = `${this.baseURL}/${this.controller}/${action}/${action}?Valor=${encodeURIComponent(String(investimento))}&Meses=${encodeURIComponent(String(meses))}`;
 
-        // Do the request
-        return await axios.get<RetornoModel>(url)
-            .catch((error) => {
-                console.error('Erro na requisição:', error.message);
-                console.error('Status:', error.response?.status);
-                console.error('Detalhes:', error.response?.data); // Back-end may send messages here
+        try {
+            const response = await fetch(url);
 
+            if (!response.ok) {
+                console.error('Erro na requisição:', response.status, await response.text());
                 throw new Error('Erro ao solicitarCalculoInvestimento');
-            });
+            }
+
+            const data = (await response.json()) as RetornoModel;
+
+            return { data };
+        } catch (error: any) {
+            console.error('Erro na requisição:', error?.message ?? error);
+            
+            throw new Error('Erro ao solicitarCalculoInvestimento');
+        }
     }
 }
