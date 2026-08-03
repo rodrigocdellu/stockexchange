@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue';
 import { CdbService } from '../../services/CdbService';
 import type { RetornoModel } from '../../models/RetornoModel';
 import VueImg from '../../../../public/Vue.png';
+import ViteImg from '../../../../public/Vite.png';
 import TSImg from '../../../../public/TS.png';
 import JSImg from '../../../../public/JS.png';
 import HTML5Img from '../../../../public/HTML5.png';
@@ -274,8 +275,8 @@ figure figcaption {
         <div class="internalCard">
             <h2>Resultado do Investimento CDB</h2>
             <dl class="grid">
-                <dt>Retorno Bruto:</dt><dd>{{currency(retornoModel?.resultadoBruto)}}</dd>
-                <dt>Retorno Líquido:</dt><dd>{{currency(retornoModel?.resultadoLiquido)}}</dd>
+                <dt>Retorno Bruto:</dt><dd>{{ currency(retornoModel?.resultadoBruto) }}</dd>
+                <dt>Retorno Líquido:</dt><dd>{{ currency(retornoModel?.resultadoLiquido) }}</dd>
             </dl>
         </div>
         <p>
@@ -284,6 +285,8 @@ figure figcaption {
         <figure>
             <figcaption>Desenvolvido Com</figcaption>
             <a class="link" target="_blank" href="https://vuejs.org"><img :src="VueImg" alt="Vue" /></a>
+            &nbsp;&nbsp;
+            <a class="link" target="_blank" href="https://vite.dev"><img :src="ViteImg" alt="Vite" /></a>
             &nbsp;&nbsp;
             <a class="link" target="_blank" href="https://www.typescriptlang.org"><img :src="TSImg" alt="TypeScript" /></a>
             &nbsp;&nbsp;
