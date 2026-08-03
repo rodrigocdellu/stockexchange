@@ -25,7 +25,7 @@ jobs:
           node-version: '20.19'
 
       - name: Install StockExchange.ReactUI Dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Build StockExchange.ReactUI
         run: npm run build

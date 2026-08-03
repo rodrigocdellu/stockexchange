@@ -25,10 +25,10 @@ jobs:
           node-version: '20.19'
 
       - name: Install Angular CLI
-        run: npm i -g @angular/cli
+        run: npm i -g @angular/cli --ignore-scripts
 
       - name: Install StockExchange.AngularUI Dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Build StockExchange.AngularUI
         run: ng build
