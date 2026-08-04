@@ -1,8 +1,7 @@
 FROM node:lts-slim AS build
 WORKDIR /app
-#RUN npm install --silent -g @angular/cli
 COPY StockExchange.ReactUI/package*.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 COPY StockExchange.ReactUI/. ./
 RUN npm run build
 
