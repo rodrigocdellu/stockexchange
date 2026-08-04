@@ -42,9 +42,9 @@ function currency(value: string | undefined): string {
 
 function parseValue(value: string): number {
   const normalized = value
-    .replace('R$', '')
-    .replace(/\./g, '')
-    .replace(',', '.')
+    .replaceAll('R$', '')
+    .replaceAll(/\./g, '')
+    .replaceAll(',', '.')
     .trim();
 
   return Number(normalized);
