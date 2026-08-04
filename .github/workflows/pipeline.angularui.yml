@@ -31,7 +31,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Build StockExchange.AngularUI
-        run: npm exec ng build
+        run: npm exec --ignore-scripts ng build
 
       - name: Begin Sonar Analysis for StockExchange.AngularUI
         uses: SonarSource/sonarqube-scan-action@v5
