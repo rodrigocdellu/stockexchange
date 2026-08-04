@@ -34,6 +34,6 @@ jobs:
         run: npm exec --ignore-scripts ng build
 
       - name: Begin Sonar Analysis for StockExchange.AngularUI
-        uses: SonarSource/sonarqube-scan-action@8.2.1
+        uses: SonarSource/sonarqube-scan-action@v8.2.1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
