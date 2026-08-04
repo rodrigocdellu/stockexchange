@@ -1,6 +1,6 @@
 FROM node:lts-slim AS build
 WORKDIR /app
-RUN npm install --silent -g @angular/cli
+RUN npm i -g --silent --ignore-scripts @angular/cli
 COPY StockExchange.AngularUI/package*.json ./
 RUN npm ci
 COPY StockExchange.AngularUI/. ./

@@ -25,7 +25,7 @@ jobs:
           node-version: '26.0.0'
 
       - name: Install Angular CLI
-        run: npm i --ignore-scripts @angular/cli@21.2.19
+        run: npm i -g --ignore-scripts @angular/cli@21.2.19
 
       - name: Install StockExchange.AngularUI Dependencies
         run: npm ci --ignore-scripts
