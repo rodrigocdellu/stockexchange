@@ -19,6 +19,9 @@ ARG configuration=Release
 RUN dotnet publish "StockExchange.WebAPI.csproj" -c "$configuration" -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
+USER nonroot
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY StockExchange.WebAPI/Public /app/Public
