@@ -6,6 +6,9 @@ COPY StockExchange.ReactUI/. ./
 RUN npm run build
 
 FROM nginx:stable AS final
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
+USER nonroot
 EXPOSE 80
 EXPOSE 443
 # 2025/04/21 - Uncomment the line below to replace the default NGINX configuration with your custom one
