@@ -21,5 +21,9 @@ export default defineConfig({
             "@": Path.resolve(__dirname, "./src"),
         },
     },
+    server: {
+        port: 5172,
+        host: 'localhost'
+    }
     //plugins: [react()], // 2025/05/14 - The original Vite project started with just this line
 });

@@ -10,8 +10,8 @@ import { RetornoModel } from '../models/retorno.model';
     providedIn: 'root'
 })
 export class CdbService {
-    // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
-    private readonly baseURL = environment.ANGULAR_WEBAPI_URL ?? 'http://localhost:5041';
+    // Sample URL"http://localhost:5170/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
+    private readonly baseURL = environment.ANGULAR_WEBAPI_URL ?? 'http://localhost:5170';
     private readonly controller = "Cdb";
 
     constructor(private readonly http: HttpClient) {

@@ -31,12 +31,32 @@ builder.Services.AddTransient<ICdbService, CdbService>(); // 2025/04/22 - Add th
 // 2025/04/20 - Add CORS with a policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(POLICYFORCORS, policy =>
+    if (builder.Environment.IsDevelopment())
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
+        options.AddPolicy(POLICYFORCORS, policy =>
+        {
+            policy.WithOrigins(
+                "http://localhost:5171", // 2025/04/20 - Allow Angular UI for Development
+                "http://localhost:5172", // 2025/04/20 - Allow React UI for Development
+                "http://localhost:5173"  // 2025/04/20 - Allow Vue UI for Development
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+    }
+    else
+    {
+        options.AddPolicy(POLICYFORCORS, policy =>
+        {
+            policy.WithOrigins(
+                "http://localhost:7100", // 2025/04/20 - Allow Angular UI for Docker
+                "http://localhost:7200", // 2025/04/20 - Allow React UI for Docker
+                "http://localhost:7300"  // 2025/04/20 - Allow Vue UI for Docker
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+    }
 });
 
 // Build the application

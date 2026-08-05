@@ -1,8 +1,8 @@
 import type { RetornoModel } from '../models/RetornoModel';
 
 export class CdbService {
-    // Sample URL"http://localhost:5041/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
-    private readonly baseURL = import.meta.env.VITE_WEBAPI_URL ?? 'http://localhost:5041';
+    // Sample URL"http://localhost:5170/Cdb/SolicitarCalculoInvestimento/SolicitarCalculoInvestimento?Valor=1&Meses=2"
+    private readonly baseURL = import.meta.env.VITE_WEBAPI_URL ?? 'http://localhost:5170';
     private readonly controller = 'Cdb';
 
     async solicitarCalculoInvestimento(investimento: number, meses: number): Promise<{ data: RetornoModel }> {
