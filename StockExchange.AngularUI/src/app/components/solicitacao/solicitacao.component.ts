@@ -32,9 +32,9 @@ export class SolicitacaoComponent {
                 ? investimentoFormatado
                 : parseFloat(
                     investimentoFormatado
-                        .replace('R$', '')
-                        .replace(/\./g, '')
-                        .replace(',', '.')
+                        .replaceAll('R$', '')
+                        .replaceAll('.', '')
+                        .replaceAll(',', '.')
                         .trim()
                 );
             

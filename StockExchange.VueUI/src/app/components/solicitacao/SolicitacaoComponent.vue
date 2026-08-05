@@ -43,7 +43,7 @@ function currency(value: string | undefined): string {
 function parseValue(value: string): number {
   const normalized = value
     .replaceAll('R$', '')
-    .replaceAll(/\./g, '')
+    .replaceAll('.', '')
     .replaceAll(',', '.')
     .trim();
 
