@@ -7,8 +7,9 @@ COPY StockExchange.AngularUI/. ./
 RUN ng build --configuration=production
 
 FROM nginx:stable AS final
-RUN addgroup -S nonroot \
-    && adduser -S nonroot -G nonroot
+RUN useradd -r -u 1001 -g nginx nonroot \
+    && mkdir -p /var/cache/nginx /var/run /var/log/nginx /usr/share/nginx/html \
+    && chown -R nonroot:nginx /var/cache/nginx /var/run /var/log/nginx /usr/share/nginx/html
 USER nonroot
 EXPOSE 80
 EXPOSE 443

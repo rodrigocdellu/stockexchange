@@ -12,14 +12,15 @@ export default defineConfig({
         rollupOptions: {
             input: [Path.join(__dirname, "src/index.html")],
         },
+        emptyOutDir: true
     },
     plugins: [
-        react(),
+        react()
     ],
     resolve: {
         alias: {
-            "@": Path.resolve(__dirname, "./src"),
-        },
+            "@": Path.resolve(__dirname, "./src")
+        }
     },
     server: {
         port: 5172,

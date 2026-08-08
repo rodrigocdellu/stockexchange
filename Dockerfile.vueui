@@ -1,8 +1,8 @@
 FROM node:lts-slim AS build
 WORKDIR /app
-COPY StockExchange.ReactUI/package*.json ./
+COPY StockExchange.VueUI/package*.json ./
 RUN npm ci --ignore-scripts
-COPY StockExchange.ReactUI/. ./
+COPY StockExchange.VueUI/. ./
 RUN npm run build
 
 FROM nginx:stable AS final
